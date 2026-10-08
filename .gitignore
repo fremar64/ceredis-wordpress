@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+# WordPress runtime state
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/languages/
+
+# Docker/runtime
+*.log
+docker-data/
+.DS_Store

@@ -1,0 +1,9 @@
+.git
+.github
+.env
+.env.*
+wp-content/uploads
+wp-content/cache
+wp-content/upgrade
+wp-content/languages
+*.log

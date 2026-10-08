@@ -1,0 +1,73 @@
+/*
+Theme Name: CEREDIS
+Theme URI: https://ceredis.net/
+Author: CEREDIS
+Author URI: https://ceredis.net/
+Description: Official editorial theme for the CEREDIS WordPress Multisite network.
+Version: 0.1.0
+Requires at least: 7.1
+Requires PHP: 8.3
+License: GPL-2.0-or-later
+Text Domain: ceredis
+*/
+
+.wp-site-blocks {
+    min-height: 100vh;
+}
+
+.ceredis-network {
+    text-rendering: optimizeLegibility;
+}
+
+.ceredis-header {
+    border-bottom: 1px solid var(--wp--preset--color--ceredis-border);
+}
+
+.ceredis-hero {
+    overflow: hidden;
+}
+
+.ceredis-hero .wp-block-heading {
+    max-width: 950px;
+    letter-spacing: -0.035em;
+}
+
+.ceredis-section .wp-block-heading {
+    letter-spacing: -0.02em;
+}
+
+.ceredis-card {
+    height: 100%;
+    padding: 2rem;
+    border: 1px solid var(--wp--preset--color--ceredis-border);
+    border-radius: 1rem;
+    background: var(--wp--preset--color--ceredis-white);
+    box-sizing: border-box;
+}
+
+.ceredis-card .wp-block-heading {
+    margin-top: 0;
+}
+
+.ceredis-mission-highlight {
+    border-radius: 1rem;
+}
+
+.ceredis-footer {
+    margin-top: 0;
+}
+
+.ceredis-footer .wp-block-navigation-item__content {
+    color: inherit;
+}
+
+@media (max-width: 781px) {
+    .ceredis-card {
+        padding: 1.5rem;
+    }
+
+    .ceredis-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

@@ -37,17 +37,25 @@ It provides a WordPress Multisite network in subdomain mode. WordPress is the ed
 ## Local development
 
 1. Copy `.env.example` to `.env`.
-2. Replace every `change-me` value.
-3. Build and start:
+2. Generate unique local salts and replace every `change-me` value.
+3. Keep `WORDPRESS_SCHEME=http` for local development.
+4. Use a development hostname such as `ceredis.test` and map it to `127.0.0.1` locally.
+5. Build and start:
 
 ```bash
-docker compose build
-docker compose up -d
+docker compose -f docker-compose.yml -f docker-compose.dev.yml build
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
-4. Open `http://ceredis.localhost:8080` if the hostname resolves locally, or use an equivalent local DNS/hosts entry.
+6. Bootstrap the network explicitly:
 
-The first installation still requires the normal WordPress installation/network bootstrap. Do not create production sites from this local environment.
+```bash
+docker compose exec wordpress ceredis-bootstrap-multisite
+```
+
+7. Set `WP_MULTISITE=true` in `.env`, then restart the stack.
+
+The bootstrap uses WP-CLI's official Multisite installation command with `--skip-config`; the repository-owned immutable configuration supplies the network constants. WordPress documents that subdomain Multisite cannot use `localhost`, so use a real development hostname such as `ceredis.test`. Do not create production sites from this local environment.
 
 ## Production
 
