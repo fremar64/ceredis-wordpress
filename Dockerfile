@@ -1,5 +1,11 @@
 FROM wordpress:7.1.2-php8.3-apache
 
+# curl is required by Coolify's HTTP healthcheck.
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends curl; \
+    rm -rf /var/lib/apt/lists/*
+
 # WP-CLI is included for controlled, explicit bootstrap/diagnostic operations.
 COPY --from=wordpress:cli-2.12.0-php8.3 /usr/local/bin/wp /usr/local/bin/wp
 
