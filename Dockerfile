@@ -10,6 +10,10 @@ RUN set -eux; \
 COPY --from=wordpress:cli-2.12.0-php8.3 /usr/local/bin/wp /usr/local/bin/wp
 
 WORKDIR /usr/src/wordpress
+# CEREDIS-controlled WordPress configuration.
+# This replaces the official config so that no PHP code is evaluated
+# from the WORDPRESS_CONFIG_EXTRA environment variable.
+COPY docker/wp-config-docker.php ./wp-config-docker.php
 
 # Apache configuration for WordPress Multisite.
 RUN set -eux; \
@@ -40,5 +44,11 @@ RUN set -eux; \
       ./wp-content/mu-plugins/ceredis-core \
       ./wp-content/themes/ceredis \
       ./.htaccess
+
+# Docker-native healthcheck for Coolify.
+# Coolify will use this instead of generating a wget-based check.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
+    CMD curl --fail --silent --show-error \
+    http://127.0.0.1/wp-login.php >/dev/null || exit 1
 
 # Runtime writes are limited to explicitly mounted writable paths.
