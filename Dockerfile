@@ -50,8 +50,12 @@ COPY wp-content/mu-plugins/ ./wp-content/mu-plugins/
 COPY wp-content/themes/ceredis/ ./wp-content/themes/ceredis/
 COPY scripts/bootstrap-multisite.sh /usr/local/bin/ceredis-bootstrap-multisite
 
+# Initialize persistent uploads permissions before WordPress starts.
+COPY docker/entrypoint-ceredis.sh /usr/local/bin/entrypoint-ceredis.sh
+
 RUN set -eux; \
     chmod 0755 /usr/local/bin/ceredis-bootstrap-multisite; \
+    chmod 0755 /usr/local/bin/entrypoint-ceredis.sh; \
     chown -R www-data:www-data \
       ./wp-content/mu-plugins/ceredis-core \
       ./wp-content/themes/ceredis \
@@ -62,5 +66,8 @@ RUN set -eux; \
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
     CMD curl --fail --silent --show-error \
     http://127.0.0.1/wp-login.php >/dev/null || exit 1
+
+# Preserve the official WordPress entrypoint through the CEREDIS wrapper.
+ENTRYPOINT ["/usr/local/bin/entrypoint-ceredis.sh"]
 
 # Runtime writes are limited to explicitly mounted writable paths.
