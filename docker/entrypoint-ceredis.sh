@@ -9,13 +9,10 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-if [ ! -d "$UPLOADS_DIR" ]; then
-    echo >&2 "ERROR: WordPress uploads directory does not exist: $UPLOADS_DIR"
-    exit 1
-fi
+# Ensure that the uploads directory exists before checking ownership.
+mkdir -p "$UPLOADS_DIR"
 
 # Repair ownership if any file or directory is not owned by www-data.
-# This also detects permission regressions after the initial deployment.
 if find "$UPLOADS_DIR" ! -user www-data -print -quit | grep -q .; then
     echo "Correcting WordPress uploads directory ownership..."
     chown -R www-data:www-data "$UPLOADS_DIR"

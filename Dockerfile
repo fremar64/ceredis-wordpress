@@ -69,5 +69,6 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
 
 # Preserve the official WordPress entrypoint through the CEREDIS wrapper.
 ENTRYPOINT ["/usr/local/bin/entrypoint-ceredis.sh"]
+CMD ["apache2-foreground"]
 
 # Runtime writes are limited to explicitly mounted writable paths.
