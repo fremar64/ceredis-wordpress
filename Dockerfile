@@ -3,8 +3,20 @@ FROM wordpress:7.1.2-php8.3-apache
 # curl is required by Coolify's HTTP healthcheck.
 RUN set -eux; \
     apt-get update; \
-    apt-get install -y --no-install-recommends curl; \
+    apt-get install -y --no-install-recommends curl unzip; \
     rm -rf /var/lib/apt/lists/*
+
+# French translation files are part of the immutable Docker image.
+RUN set -eux; \
+    mkdir -p /usr/src/wordpress/wp-content/languages; \
+    curl --fail --silent --show-error --location \
+      https://downloads.wordpress.org/translation/core/7.1.2/fr_FR.zip \
+      --output /tmp/wordpress-fr_FR.zip; \
+    unzip -o /tmp/wordpress-fr_FR.zip \
+      -d /usr/src/wordpress/wp-content/languages; \
+    rm -f /tmp/wordpress-fr_FR.zip; \
+    chown -R www-data:www-data \
+      /usr/src/wordpress/wp-content/languages
 
 # WP-CLI is included for controlled, explicit bootstrap/diagnostic operations.
 COPY --from=wordpress:cli-2.12.0-php8.3 /usr/local/bin/wp /usr/local/bin/wp
