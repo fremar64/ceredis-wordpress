@@ -2,3 +2,6 @@ services:
   wordpress:
     ports:
       - "8080:80"
+    environment:
+      DISALLOW_FILE_EDIT: "true"
+      DISALLOW_FILE_MODS: "false"
