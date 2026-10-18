@@ -1,20 +1,54 @@
-<!-- wp:group {"align":"full","className":"ceredis-footer","backgroundColor":"ceredis-blue","textColor":"ceredis-white","style":{"spacing":{"padding":{"top":"4rem","bottom":"2rem"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull ceredis-footer has-ceredis-white-color has-ceredis-blue-background-color has-text-color has-background" style="padding-top:4rem;padding-bottom:2rem">
+<!-- wp:group {"align":"full","className":"ceredis-footer","backgroundColor":"ceredis-ink","textColor":"ceredis-white","style":{"spacing":{"padding":{"top":"clamp(3.5rem,6vw,4.5rem)","bottom":"clamp(1.5rem,3vw,2.5rem)"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull ceredis-footer has-ceredis-white-color has-ceredis-ink-background-color has-text-color has-background" id="footer">
 
-	<!-- wp:columns {"align":"wide"} -->
+	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"2rem"}}} -->
 	<div class="wp-block-columns alignwide">
 
-		<!-- wp:column {"width":"45%"} -->
-		<div class="wp-block-column" style="flex-basis:45%">
+		<!-- wp:column -->
+		<div class="wp-block-column">
 
-			<!-- wp:site-title {"level":0} /-->
+			<!-- wp:image {"width":"190px","sizeSlug":"full","linkDestination":"none","className":"ceredis-footer-logo"} -->
+			<figure class="wp-block-image size-full is-resized ceredis-footer-logo"><img src="/wp-content/themes/ceredis/assets/images/CEREDIS-1.png" alt="CEREDIS — Centre de Ressources Didactiques et d’Innovation Scolaire" style="width:190px"/></figure>
+			<!-- /wp:image -->
 
 			<!-- wp:paragraph -->
-			<p>Centre de Ressources Didactiques et Scolaires Numériques.</p>
+			<p>Centre de Ressources Didactiques et d’Innovation Scolaire</p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"textColor":"ceredis-cyan"} -->
-			<p class="has-ceredis-cyan-color has-text-color"><strong>La transformation numérique de l’éducation.</strong></p>
+			<!-- wp:social-links {"iconColor":"ceredis-white","iconBackgroundColor":"ceredis-blue","className":"is-style-logos-only"} -->
+			<ul class="wp-block-social-links has-ceredis-white-icon-color has-ceredis-blue-icon-background-color is-style-logos-only">
+				<!-- wp:social-link {"url":"https://www.youtube.com/@ceredis4633","service":"youtube","label":"YouTube CEREDIS"} /-->
+				<!-- wp:social-link {"url":"https://www.facebook.com/ceredis.net/","service":"facebook","label":"Facebook CEREDIS"} /-->
+				<!-- wp:social-link {"url":"https://cg.linkedin.com/company/ceredis","service":"linkedin","label":"LinkedIn CEREDIS"} /-->
+				<!-- wp:social-link {"url":"https://www.tiktok.com/@ceredis.net","service":"tiktok","label":"TikTok CEREDIS"} /-->
+			</ul>
+			<!-- /wp:social-links -->
+
+		</div>
+		<!-- /wp:column -->
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+
+			<!-- wp:heading {"level":3,"textColor":"ceredis-white"} -->
+			<h3 class="wp-block-heading has-ceredis-white-color has-text-color">Nos plateformes</h3>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph -->
+			<p><a href="https://rallye.ceredis.net" target="_blank" rel="noopener noreferrer">Rallye scolaire</a></p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p><a href="https://enaa.ceredis.net" target="_blank" rel="noopener noreferrer">ENAA — Apprentissage adaptatif</a></p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p><a href="https://ecole-en-ligne.ceredis.net" target="_blank" rel="noopener noreferrer">Académie CEREDIS</a></p>
+			<!-- /wp:paragraph -->
+			<!-- TODO-CONTENT: remplacer par https://academie.ceredis.net quand la migration sera terminée -->
+
+			<!-- wp:paragraph -->
+			<p><a href="https://publications.ceredis.net" target="_blank" rel="noopener noreferrer">Éditions scientifiques CEREDIS</a></p>
 			<!-- /wp:paragraph -->
 
 		</div>
@@ -24,24 +58,65 @@
 		<div class="wp-block-column">
 
 			<!-- wp:heading {"level":3,"textColor":"ceredis-white"} -->
-			<h3 class="wp-block-heading has-ceredis-white-color has-text-color">CEREDIS</h3>
+			<h3 class="wp-block-heading has-ceredis-white-color has-text-color">Ressources</h3>
 			<!-- /wp:heading -->
 
-			<!-- wp:navigation {"overlayMenu":"never"} /-->
+			<!-- wp:paragraph -->
+			<p><a href="/blog/">Blog CEREDIS</a></p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p><a href="https://www.canva.com/design/DAGHasNjcx4/WsQVcRkgwoyU0MTakv94cQ/view" target="_blank" rel="noopener noreferrer">Rapport d’activités 2024</a></p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p><a href="https://www.canva.com/design/DAFqCYtTw_E/ANg-AMqm2I0oxyaujeHqQQ/view" target="_blank" rel="noopener noreferrer">Charte du renouveau pédagogique</a></p>
+			<!-- /wp:paragraph -->
+
+		</div>
+		<!-- /wp:column -->
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+
+			<!-- wp:heading {"level":3,"textColor":"ceredis-white"} -->
+			<h3 class="wp-block-heading has-ceredis-white-color has-text-color">Contact</h3>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph -->
+			<p><a href="/#contact">Nous contacter</a></p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p><a href="mailto:contact@ceredis.net">contact@ceredis.net</a></p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p><a href="tel:+242064061534">(+242) 06 406 1534</a></p>
+			<!-- /wp:paragraph -->
 
 		</div>
 		<!-- /wp:column -->
 
 	</div>
 	<!-- /wp:columns -->
+	<!-- TODO-CONTENT: Ajouter une colonne Informations avec Mentions légales, Confidentialité et Cookies uniquement si ces pages sont créées. -->
 
-	<!-- wp:separator {"backgroundColor":"ceredis-cyan","className":"is-style-wide"} -->
-	<hr class="wp-block-separator has-text-color has-ceredis-cyan-color has-alpha-channel-opacity has-ceredis-cyan-background-color has-background is-style-wide"/>
+	<!-- wp:separator {"backgroundColor":"ceredis-cyan","className":"is-style-wide ceredis-footer-divider"} -->
+	<hr class="wp-block-separator has-text-color has-ceredis-cyan-color has-alpha-channel-opacity has-ceredis-cyan-background-color has-background is-style-wide ceredis-footer-divider"/>
 	<!-- /wp:separator -->
 
-	<!-- wp:paragraph {"fontSize":"small"} -->
-	<p class="has-small-font-size">© CEREDIS — Centre de Ressources Didactiques et Scolaires Numériques</p>
-	<!-- /wp:paragraph -->
+	<!-- wp:group {"align":"wide","className":"ceredis-footer__legal","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignwide ceredis-footer__legal">
+		<!-- wp:paragraph {"fontSize":"small"} -->
+		<p class="has-small-font-size">© CEREDIS, nom de marque et nom commercial de l'association VILUKA.</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:paragraph {"fontSize":"small"} -->
+		<p class="has-small-font-size">Association déclarée à la préfecture de Maine-et-Loire le 4 février 2020 (Journal officiel du 8 février 2020, annonce n° 1002). Siège social : 4e étage, 95 boulevard Joseph Bédier, 49000 Angers, France.</p>
+		<!-- /wp:paragraph -->
+		<!-- TODO-CONTENT: Ajouter le numéro RNA et le SIRET de l'association après confirmation. -->
+	</div>
+	<!-- /wp:group -->
 
 </div>
 <!-- /wp:group -->

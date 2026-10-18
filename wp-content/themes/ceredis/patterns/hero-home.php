@@ -7,44 +7,80 @@
  */
 ?>
 
-<!-- wp:group {"align":"full","className":"ceredis-hero","style":{"spacing":{"padding":{"top":"clamp(5rem,10vw,9rem)","bottom":"clamp(5rem,10vw,9rem)"}}},"backgroundColor":"ceredis-blue","textColor":"ceredis-white","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"full","className":"ceredis-hero","backgroundColor":"ceredis-blue","textColor":"ceredis-white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull ceredis-hero has-ceredis-white-color has-ceredis-blue-background-color has-text-color has-background">
 
-	<!-- wp:group {"style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"constrained","contentSize":"900px"}} -->
-	<div class="wp-block-group">
+	<!-- wp:columns {"align":"wide","verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"clamp(2rem,5vw,4.5rem)"}}}} -->
+	<div class="wp-block-columns alignwide are-vertically-aligned-center">
 
-		<!-- wp:paragraph {"textColor":"ceredis-cyan","fontSize":"eyebrow"} -->
-		<p class="has-ceredis-cyan-color has-text-color has-eyebrow-font-size">CENTRE DE RESSOURCES DIDACTIQUES ET SCOLAIRES NUMÉRIQUES</p>
-		<!-- /wp:paragraph -->
+		<!-- wp:column {"verticalAlignment":"center","width":"60%"} -->
+		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%">
 
-		<!-- wp:heading {"level":1,"fontSize":"hero"} -->
-		<h1 class="wp-block-heading has-hero-font-size">Transformer l’éducation par le numérique.</h1>
-		<!-- /wp:heading -->
+			<!-- wp:group {"className":"ceredis-hero-content","style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group ceredis-hero-content">
 
-		<!-- wp:paragraph {"fontSize":"lead"} -->
-		<p class="has-lead-font-size">CEREDIS conçoit des ressources, des plateformes et des dispositifs numériques pour contribuer à une éducation de qualité, accessible et adaptée aux réalités des territoires.</p>
-		<!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"ceredis-eyebrow","textColor":"ceredis-cyan","fontSize":"eyebrow"} -->
+				<p class="ceredis-eyebrow has-ceredis-cyan-color has-text-color has-eyebrow-font-size">PLATEFORMES D'APPRENTISSAGE GRATUITES · RALLYE SCOLAIRE DU CONGO</p>
+				<!-- /wp:paragraph -->
 
-		<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"1rem"}}}} -->
-		<div class="wp-block-buttons" style="margin-top:1rem">
+				<!-- wp:heading {"level":1,"fontSize":"hero","textColor":"ceredis-white"} -->
+				<h1 class="wp-block-heading has-ceredis-white-color has-text-color has-hero-font-size">Aidez chaque élève à réussir, quelle que soit son école.</h1>
+				<!-- /wp:heading -->
 
-			<!-- wp:button {"backgroundColor":"ceredis-cyan","textColor":"ceredis-blue"} -->
-			<div class="wp-block-button">
-				<a class="wp-block-button__link has-ceredis-blue-color has-ceredis-cyan-background-color has-text-color has-background wp-element-button">Découvrir CEREDIS</a>
+				<!-- wp:paragraph {"fontSize":"lead"} -->
+				<p class="has-lead-font-size">CEREDIS met gratuitement à la disposition des établissements du Congo des plateformes d'apprentissage et un Rallye scolaire. Vous préparez vos élèves, vous suivez leurs progrès, ils se dépassent.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"1rem"},"blockGap":"0.875rem"}}} -->
+				<div class="wp-block-buttons" style="margin-top:1rem">
+
+					<!-- wp:button {"backgroundColor":"ceredis-fuchsia","textColor":"ceredis-white","className":"ceredis-hero-primary"} -->
+					<div class="wp-block-button ceredis-hero-primary">
+						<a class="wp-block-button__link has-ceredis-white-color has-ceredis-fuchsia-background-color has-text-color has-background wp-element-button" href="/#inscription">Inscrire mon établissement</a>
+					</div>
+					<!-- /wp:button -->
+
+					<!-- wp:button {"backgroundColor":"ceredis-white","textColor":"ceredis-blue","className":"ceredis-hero-sponsor"} -->
+					<div class="wp-block-button ceredis-hero-sponsor">
+						<a class="wp-block-button__link has-ceredis-blue-color has-ceredis-white-background-color has-text-color has-background wp-element-button" href="/#sponsors">Devenir sponsor</a>
+					</div>
+					<!-- /wp:button -->
+
+				</div>
+				<!-- /wp:buttons -->
+
+				<!-- wp:group {"className":"ceredis-hero-pills","layout":{"type":"flex","flexWrap":"wrap"}} -->
+				<div class="wp-block-group ceredis-hero-pills">
+					<!-- wp:paragraph {"className":"ceredis-pill"} -->
+					<p class="ceredis-pill">1<sup>re</sup> édition : janvier 2027</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"className":"ceredis-pill"} -->
+					<p class="ceredis-pill">Seconde et Première · Français</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"className":"ceredis-pill"} -->
+					<p class="ceredis-pill">Gratuit pour les établissements</p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+
 			</div>
-			<!-- /wp:button -->
-
-			<!-- wp:button {"className":"is-style-outline","textColor":"ceredis-white"} -->
-			<div class="wp-block-button is-style-outline">
-				<a class="wp-block-button__link has-ceredis-white-color has-text-color wp-element-button">Nos programmes</a>
-			</div>
-			<!-- /wp:button -->
+			<!-- /wp:group -->
 
 		</div>
-		<!-- /wp:buttons -->
+		<!-- /wp:column -->
+
+		<!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
+		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%">
+
+			<div class="ceredis-hero-visual">
+				<img class="ceredis-hero-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/Apprentissage collaboratif autour d’un ordinateur portable-3.png' ) ); ?>" alt="Trois élèves africains collaborent autour d’un ordinateur portable dans une activité pédagogique" width="1672" height="941" fetchpriority="high" decoding="async"/>
+			</div>
+
+		</div>
+		<!-- /wp:column -->
 
 	</div>
-	<!-- /wp:group -->
+	<!-- /wp:columns -->
 
 </div>
 <!-- /wp:group -->

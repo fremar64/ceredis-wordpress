@@ -5,7 +5,7 @@
     "appearanceTools": true,
     "layout": {
       "contentSize": "1200px",
-      "wideSize": "1440px"
+      "wideSize": "1320px"
     },
     "color": {
       "defaultPalette": false,
@@ -25,6 +25,26 @@
           "slug": "ceredis-fuchsia",
           "color": "#D81B72",
           "name": "CEREDIS Fuchsia"
+        },
+        {
+          "slug": "ceredis-fuchsia-hover",
+          "color": "#A3114D",
+          "name": "CEREDIS Fuchsia Hover"
+        },
+        {
+          "slug": "ceredis-deep",
+          "color": "#0B2A4A",
+          "name": "CEREDIS Deep Navy"
+        },
+        {
+          "slug": "ceredis-pale-cyan",
+          "color": "#E8F6FA",
+          "name": "CEREDIS Pale Cyan"
+        },
+        {
+          "slug": "ceredis-pale-fuchsia",
+          "color": "#FBE7F0",
+          "name": "CEREDIS Pale Fuchsia"
         },
         {
           "slug": "ceredis-ink",
@@ -86,6 +106,11 @@
           "slug": "2xl",
           "size": "4rem",
           "name": "2X large"
+        },
+        {
+          "slug": "3xl",
+          "size": "6rem",
+          "name": "3X large"
         }
       ]
     },
@@ -116,7 +141,7 @@
         },
         {
           "slug": "eyebrow",
-          "size": "0.75rem",
+          "size": "0.875rem",
           "name": "Eyebrow"
         },
         {
@@ -126,8 +151,23 @@
         },
         {
           "slug": "hero",
-          "size": "clamp(2.75rem, 7vw, 6rem)",
+          "size": "clamp(2.5rem, 4.5vw, 4.5rem)",
           "name": "Hero"
+        },
+        {
+          "slug": "heading-2",
+          "size": "clamp(2rem, 3.5vw, 3rem)",
+          "name": "Heading 2"
+        },
+        {
+          "slug": "heading-3",
+          "size": "clamp(1.25rem, 2vw, 1.5rem)",
+          "name": "Heading 3"
+        },
+        {
+          "slug": "stat",
+          "size": "clamp(2.5rem, 4vw, 3.5rem)",
+          "name": "Statistic"
         }
       ]
     },
@@ -146,21 +186,46 @@
     "typography": {
       "fontFamily": "var:preset|font-family|system",
       "fontSize": "var:preset|font-size|body",
-      "lineHeight": "1.6"
+      "lineHeight": "1.7"
     },
     "elements": {
       "heading": {
         "typography": {
           "fontWeight": "700",
           "lineHeight": "1.15"
+        },
+        "color": {
+          "text": "var:preset|color|ceredis-ink"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var:preset|font-size|heading-2"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontSize": "var:preset|font-size|heading-3"
         }
       },
       "button": {
+        "color": {
+          "background": "var:preset|color|ceredis-blue",
+          "text": "var:preset|color|ceredis-white"
+        },
         "border": {
           "radius": "999px"
         },
         "typography": {
           "fontWeight": "600"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.85rem",
+            "right": "1.5rem",
+            "bottom": "0.85rem",
+            "left": "1.5rem"
+          }
         }
       },
       "link": {

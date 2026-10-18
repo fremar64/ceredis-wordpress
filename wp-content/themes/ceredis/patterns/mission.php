@@ -7,8 +7,8 @@
  */
 ?>
 
-<!-- wp:group {"align":"full","className":"ceredis-section ceredis-mission","style":{"spacing":{"padding":{"top":"clamp(4rem,8vw,7rem)","bottom":"clamp(4rem,8vw,7rem)"}}},"backgroundColor":"ceredis-blue","textColor":"ceredis-white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull ceredis-section ceredis-mission has-ceredis-white-color has-ceredis-blue-background-color has-text-color has-background">
+<!-- wp:group {"align":"full","className":"ceredis-section ceredis-mission","style":{"spacing":{"padding":{"top":"clamp(4rem,7vw,6.5rem)","bottom":"clamp(4rem,7vw,6.5rem)"}}},"backgroundColor":"ceredis-blue","textColor":"ceredis-white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull ceredis-section ceredis-mission has-ceredis-white-color has-ceredis-blue-background-color has-text-color has-background" id="mission">
 
 	<!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->
 	<div class="wp-block-columns alignwide are-vertically-aligned-center">
@@ -21,11 +21,19 @@
 			<!-- /wp:paragraph -->
 
 			<!-- wp:heading {"level":2} -->
-			<h2 class="wp-block-heading">Réduire les inégalités éducatives par l’innovation numérique.</h2>
+			<h2 class="wp-block-heading">Réduire les inégalités de réussite scolaire</h2>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"fontSize":"lead"} -->
-			<p class="has-lead-font-size">CEREDIS mobilise la recherche, l’ingénierie pédagogique et les technologies numériques pour développer des solutions adaptées aux besoins des apprenants et des professionnels de l’éducation.</p>
+			<p class="has-lead-font-size">La réussite scolaire reste fortement influencée par l'origine sociale des enfants. Nous considérons cependant que ce déterminisme n'est pas une fatalité.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p>Agir sur les conditions d'apprentissage et mieux réguler les progrès des élèves peut combattre ces inégalités. CEREDIS développe une ingénierie cognitive des apprentissages, nourrie par les sciences cognitives et l'instrumentation numérique des enseignants.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph -->
+			<p>Nos environnements numériques adaptatifs soutiennent la différenciation pédagogique et le suivi individualisé des progrès, y compris dans les classes à effectifs élevés.</p>
 			<!-- /wp:paragraph -->
 
 		</div>
@@ -38,12 +46,20 @@
 			<div class="wp-block-group ceredis-mission-highlight has-ceredis-white-color has-ceredis-fuchsia-background-color has-text-color has-background" style="padding-top:2rem;padding-right:2rem;padding-bottom:2rem;padding-left:2rem">
 
 				<!-- wp:heading {"level":3} -->
-				<h3 class="wp-block-heading">Recherche &amp; développement</h3>
+				<h3 class="wp-block-heading">Ingénierie cognitive et innovation pédagogique</h3>
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph -->
-				<p>Nos solutions s’appuient sur l’ingénierie cognitive, la didactique et l’expérimentation de terrain.</p>
+				<p>Concevoir et expérimenter des solutions pour mieux réguler les apprentissages et réduire les inégalités de réussite scolaire.</p>
 				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons -->
+				<div class="wp-block-buttons">
+					<!-- wp:button {"className":"ceredis-button-featured","backgroundColor":"ceredis-white","textColor":"ceredis-blue"} -->
+					<div class="wp-block-button ceredis-button-featured"><a class="wp-block-button__link has-ceredis-blue-color has-ceredis-white-background-color has-text-color has-background wp-element-button" href="/#mission">Notre démarche et nos travaux</a></div>
+					<!-- /wp:button -->
+				</div>
+				<!-- /wp:buttons -->
 
 			</div>
 			<!-- /wp:group -->
