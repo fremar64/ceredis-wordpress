@@ -18,8 +18,13 @@ if wp core is-installed --allow-root >/dev/null 2>&1; then
 else
   echo "Installing WordPress Multisite database..."
   if [[ -z "${CEREDIS_ADMIN_PASSWORD:-}" ]]; then
-    read -r -s -p "CEREDIS admin password: " CEREDIS_ADMIN_PASSWORD
-    echo
+    if [[ -t 0 ]]; then
+      read -r -s -p "CEREDIS admin password: " CEREDIS_ADMIN_PASSWORD
+      echo
+    else
+      echo "ERROR: CEREDIS_ADMIN_PASSWORD is required in non-interactive mode." >&2
+      exit 1
+    fi
   fi
 
   wp core multisite-install \
