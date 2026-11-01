@@ -77,3 +77,18 @@ function ceredis_render_back_to_top(): void {
 	echo '<button type="button" class="ceredis-back-to-top" aria-label="Retour en haut de la page" aria-hidden="true" title="Retour en haut de la page"><span aria-hidden="true">↑</span></button>';
 }
 add_action( 'wp_footer', 'ceredis_render_back_to_top' );
+
+/**
+ * Register the CEREDIS block pattern category.
+ */
+function ceredis_register_pattern_categories(): void {
+	register_block_pattern_category(
+		'ceredis',
+		array(
+			'label' => __( 'CEREDIS', 'ceredis' ),
+		)
+	);
+}
+add_action( 'init', 'ceredis_register_pattern_categories' );
+
+require_once get_stylesheet_directory() . '/inc/partner-form.php';
