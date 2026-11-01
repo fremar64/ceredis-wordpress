@@ -49,7 +49,7 @@
 			<!-- wp:group {"className":"ceredis-service-actions","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group ceredis-service-actions">
 				<!-- wp:paragraph -->
-				<p><strong>Accès par public :</strong></p>
+				<p><strong>Accès par public&nbsp;:</strong></p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:list {"className":"ceredis-service-links"} -->
@@ -104,7 +104,7 @@
 		<div class="wp-block-column ceredis-card">
 
 			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">ENAA : apprentissage adaptatif</h3>
+			<h3 class="wp-block-heading">ENAA&nbsp;: apprentissage adaptatif</h3>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"className":"ceredis-service-tagline"} -->

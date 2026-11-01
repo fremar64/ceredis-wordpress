@@ -14,13 +14,13 @@ $enaa_illustration   = 'illustration-publics-enaa.webp';
 	<!-- wp:group {"className":"ceredis-section__inner","layout":{"type":"flex","orientation":"vertical"}} -->
 	<div class="wp-block-group ceredis-section__inner">
 
-		<!-- wp:group {"className":"ceredis-audiences__intro","layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ceredis-audiences__intro">
+		<!-- wp:group {"textAlign":"center","className":"ceredis-audiences__intro","layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group has-text-align-center ceredis-audiences__intro">
 			<!-- wp:paragraph {"className":"ceredis-eyebrow"} -->
 			<p class="ceredis-eyebrow">VOTRE PLACE DANS CEREDIS</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:heading {"level":2} -->
-			<h2 class="wp-block-heading">Deux plateformes, une même ambition : que chaque élève progresse.</h2>
+			<h2 class="wp-block-heading">Deux plateformes, une même ambition&nbsp;: que chaque élève progresse.</h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"ceredis-lead"} -->
 			<p class="ceredis-lead">Que vous enseigniez en lycée ou au CP, il y a une porte d'entrée pour vous.</p>
@@ -40,27 +40,27 @@ $enaa_illustration   = 'illustration-publics-enaa.webp';
 					<!-- wp:paragraph {"className":"ceredis-chip"} -->
 					<p class="ceredis-chip">Français</p>
 					<!-- /wp:paragraph -->
-					<!-- wp:paragraph {"className":"ceredis-chip"} -->
-					<p class="ceredis-chip">1<sup>re</sup> édition : janvier 2027</p>
-					<!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"ceredis-chip"} -->
+				<p class="ceredis-chip">1<sup>re</sup>&nbsp;édition&nbsp;: inscriptions du 4 janvier au 27 février 2027</p>
+				<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
 				<!-- wp:heading {"level":3} -->
-				<h3 class="wp-block-heading">Le Rallye scolaire : vos élèves se préparent, puis se mesurent.</h3>
+				<h3 class="wp-block-heading">Le Rallye scolaire&nbsp;: vos élèves se préparent, puis se mesurent.</h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph -->
-				<p>Vous enseignez le français en Seconde ou en Première ? Inscrivez votre établissement. Vos élèves s'entraînent sur la plateforme à partir de situations réelles de communication, des chansons françaises par exemple, puis s'affrontent dans une compétition en manches éliminatoires. Les finalistes repartent avec des prix.</p>
+				<p>Vous enseignez le français en Seconde ou en Première&nbsp;? Inscrivez votre établissement. Vos élèves s'entraînent sur la plateforme à partir de situations réelles de communication, des chansons françaises par exemple, puis s'affrontent dans une compétition en manches éliminatoires. Les finalistes repartent avec des prix.</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:list {"className":"ceredis-audience__list"} -->
 				<ul class="wp-block-list ceredis-audience__list">
 					<!-- wp:list-item -->
-					<li class="wp-block-list-item"><strong>Vous, enseignant·e :</strong> des supports numériques alignés sur les programmes congolais, et un tableau de bord pour suivre la progression de chaque élève.</li>
+					<li class="wp-block-list-item"><strong>Vous, enseignant·e&nbsp;:</strong> des supports numériques alignés sur les programmes congolais, et un tableau de bord pour suivre la progression de chaque élève.</li>
 					<!-- /wp:list-item -->
 					<!-- wp:list-item -->
-					<li class="wp-block-list-item"><strong>Vous, chef d'établissement :</strong> une compétition qui valorise votre lycée, sans aucun frais.</li>
+					<li class="wp-block-list-item"><strong>Vous, chef d'établissement&nbsp;:</strong> une compétition qui valorise votre lycée, sans aucun frais.</li>
 					<!-- /wp:list-item -->
 					<!-- wp:list-item -->
-					<li class="wp-block-list-item"><strong>Vos élèves :</strong> un entraînement qui ressemble à un jeu, et une vraie compétition à gagner.</li>
+					<li class="wp-block-list-item"><strong>Vos élèves&nbsp;:</strong> un entraînement qui ressemble à un jeu, et une vraie compétition à gagner.</li>
 					<!-- /wp:list-item -->
 				</ul>
 				<!-- /wp:list -->
@@ -109,21 +109,21 @@ $enaa_illustration   = 'illustration-publics-enaa.webp';
 				</div>
 				<!-- /wp:group -->
 				<!-- wp:heading {"level":3} -->
-				<h3 class="wp-block-heading">ENAA : des mathématiques que vos élèves comprennent en jouant.</h3>
+				<h3 class="wp-block-heading">ENAA&nbsp;: des mathématiques que vos élèves comprennent en jouant.</h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph -->
-				<p>Vous enseignez au CP ou au CE1 ? Avec ENAA, vos élèves construisent eux-mêmes les notions mathématiques à travers des jeux sérieux. Un tuteur virtuel les accompagne et ajuste le parcours à leur rythme, pendant que vous gardez la main sur votre classe.</p>
+				<p>Vous enseignez au CP ou au CE1&nbsp;? Avec ENAA, vos élèves construisent eux-mêmes les notions mathématiques à travers des jeux sérieux. Un tuteur virtuel les accompagne et ajuste le parcours à leur rythme, pendant que vous gardez la main sur votre classe.</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:list {"className":"ceredis-audience__list"} -->
 				<ul class="wp-block-list ceredis-audience__list">
 					<!-- wp:list-item -->
-					<li class="wp-block-list-item"><strong>Vous, enseignant·e :</strong> un assistant pédagogique qui vous soutient et vous montre où en est chaque élève.</li>
+					<li class="wp-block-list-item"><strong>Vous, enseignant·e&nbsp;:</strong> un assistant pédagogique qui vous soutient et vous montre où en est chaque élève.</li>
 					<!-- /wp:list-item -->
 					<!-- wp:list-item -->
-					<li class="wp-block-list-item"><strong>Vos élèves :</strong> un tuteur patient, des jeux, un parcours qui s'adapte à leur niveau.</li>
+					<li class="wp-block-list-item"><strong>Vos élèves&nbsp;:</strong> un tuteur patient, des jeux, un parcours qui s'adapte à leur niveau.</li>
 					<!-- /wp:list-item -->
 					<!-- wp:list-item -->
-					<li class="wp-block-list-item"><strong>Votre école :</strong> une innovation gratuite. Rejoignez les premières classes pilotes.</li>
+					<li class="wp-block-list-item"><strong>Votre école&nbsp;:</strong> une innovation gratuite. Rejoignez les premières classes pilotes.</li>
 					<!-- /wp:list-item -->
 				</ul>
 				<!-- /wp:list -->
@@ -147,9 +147,6 @@ $enaa_illustration   = 'illustration-publics-enaa.webp';
 		<!-- /wp:group -->
 
 		<!-- TODO-CONTENT: Vérifier que l'écusson représenté sur les uniformes (illustrations générées) ne ressemble pas à l'emblème d'un établissement ou d'une institution réels. -->
-		<!-- wp:paragraph {"className":"ceredis-audiences__ai-note"} -->
-		<p class="ceredis-audiences__ai-note">Illustrations générées par IA.</p>
-		<!-- /wp:paragraph -->
 
 	</div>
 	<!-- /wp:group -->

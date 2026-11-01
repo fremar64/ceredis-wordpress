@@ -32,11 +32,11 @@
 					<!-- wp:group {"className":"ceredis-team__prose","layout":{"type":"constrained"}} -->
 					<div class="wp-block-group ceredis-team__prose">
 						<!-- wp:paragraph -->
-						<p>CEREDIS est née sur le terrain. Enseignant, puis chef d'établissement à Brazzaville, notre fondateur a connu de près les réalités de la classe. Il a ensuite accompagné des établissements dans l'usage pédagogique des salles informatiques et d'Internet, et formé leurs enseignants.</p>
+						<p>CEREDIS est née sur le terrain. Enseignant, puis chef d'établissement à Brazzaville, notre fondateur a, pendant plusieurs années, aidé des élèves en situation d'échec scolaire à surmonter leurs difficultés d'apprentissage. Il a ensuite accompagné des établissements dans l'usage pédagogique des salles informatiques et d'Internet, et formé leurs enseignants.</p>
 						<!-- /wp:paragraph -->
 
 						<!-- wp:paragraph -->
-						<p>Nos plateformes s'appuient sur la recherche en didactique et en sciences cognitives de l'apprentissage, et sur les programmes scolaires congolais.</p>
+						<p>Nos plateformes s'appuient sur la recherche en didactique et en sciences cognitives de l'apprentissage, ainsi que sur les programmes scolaires congolais.</p>
 						<!-- /wp:paragraph -->
 					</div>
 					<!-- /wp:group -->
@@ -50,7 +50,7 @@
 				<!-- wp:group {"className":"ceredis-team__identity","layout":{"type":"constrained"}} -->
 				<div class="wp-block-group ceredis-team__identity">
 					<!-- wp:paragraph -->
-					<p>CEREDIS est le nom de marque de l'association VILUKA, une entreprise de l'économie sociale et solidaire. Son modèle réunit deux forces :</p>
+					<p>CEREDIS est le nom de marque de l'association VILUKA, une entreprise de l'économie sociale et solidaire. Son modèle réunit deux forces&nbsp;:</p>
 					<!-- /wp:paragraph -->
 
 					<!-- TODO-CONTENT: Ajouter les noms et fonctions du fondateur et des autres membres de l'équipe après validation. -->

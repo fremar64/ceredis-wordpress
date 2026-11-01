@@ -39,7 +39,7 @@
 		<!-- wp:group {"className":"ceredis-steps__note","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
 		<div class="wp-block-group ceredis-steps__note">
 			<!-- wp:paragraph {"className":"ceredis-steps__note-copy"} -->
-			<p class="ceredis-steps__note-copy"><strong>1re édition, preuve de concept : entraînement sur la plateforme dès début janvier 2027.</strong> Seconde et Première, français. Les établissements inscrits aident à façonner le Rallye.</p>
+			<p class="ceredis-steps__note-copy"><strong>1<sup>re</sup>&nbsp;édition, preuve de concept&nbsp;: inscriptions des lycées du 4 janvier au 27 février 2027, puis entraînement des élèves sur la plateforme du 1<sup>er</sup>&nbsp;mars au 15 mai (calendrier prévisionnel).</strong> Seconde et Première, français. Les établissements inscrits aident à façonner le Rallye.</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">

@@ -42,7 +42,7 @@
 
 					<!-- wp:button {"backgroundColor":"ceredis-white","textColor":"ceredis-blue","className":"ceredis-hero-sponsor"} -->
 					<div class="wp-block-button ceredis-hero-sponsor">
-						<a class="wp-block-button__link has-ceredis-blue-color has-ceredis-white-background-color has-text-color has-background wp-element-button" href="/#sponsors">Devenir sponsor</a>
+						<a class="wp-block-button__link has-ceredis-blue-color has-ceredis-white-background-color has-text-color has-background wp-element-button" href="/#partenaires">Devenir partenaire</a>
 					</div>
 					<!-- /wp:button -->
 
@@ -52,7 +52,7 @@
 				<!-- wp:group {"className":"ceredis-hero-pills","layout":{"type":"flex","flexWrap":"wrap"}} -->
 				<div class="wp-block-group ceredis-hero-pills">
 					<!-- wp:paragraph {"className":"ceredis-pill"} -->
-					<p class="ceredis-pill">1<sup>re</sup> édition : janvier 2027</p>
+					<p class="ceredis-pill">1<sup>re</sup>&nbsp;édition&nbsp;: inscriptions du 4 janvier au 27 février 2027</p>
 					<!-- /wp:paragraph -->
 					<!-- wp:paragraph {"className":"ceredis-pill"} -->
 					<p class="ceredis-pill">Seconde et Première · Français</p>

@@ -4,7 +4,7 @@ Theme URI: https://ceredis.net/
 Author: CEREDIS
 Author URI: https://ceredis.net/
 Description: Official editorial theme for the CEREDIS WordPress Multisite network.
-Version: 0.2.1
+Version: 0.2.5
 Requires at least: 7.1
 Requires PHP: 8.3
 License: GPL-2.0-or-later
@@ -36,6 +36,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+}
+
+.wp-site-blocks sup {
+    font-size: 0.7em;
+    line-height: 0;
+    vertical-align: super;
 }
 
 .wp-site-blocks {
@@ -990,7 +996,10 @@ a:hover {
 .ceredis-audiences__intro {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 14px;
+    align-self: center;
+    width: 100%;
     max-width: 46rem;
 }
 
@@ -1036,12 +1045,6 @@ a:hover {
     outline: none;
     box-shadow: none;
     background: transparent;
-}
-
-.ceredis-audiences__ai-note {
-    margin-block: -2rem 0;
-    color: var(--wp--preset--color--ceredis-blue);
-    font-size: var(--wp--preset--font-size--small);
 }
 
 .ceredis-audience__tags {
@@ -2093,3 +2096,1399 @@ a:hover {
         max-height: 70svh;
     }
 }
+
+/* =====================================================================
+   15. Blog and Single Post Styles
+   ===================================================================== */
+
+/* Single post container */
+.ceredis-single-post {
+	padding-block: clamp(2rem, 4vw, 3rem);
+}
+
+/* Single post title */
+.ceredis-single-post-title {
+	margin-block: 0 1.5rem;
+	color: var(--wp--preset--color--ceredis-ink);
+	font-size: var(--wp--preset--font-size--hero);
+	line-height: 1.15;
+}
+
+/* Single post metadata group */
+.ceredis-single-post-meta {
+	color: var(--wp--preset--color--ceredis-blue);
+	font-size: var(--wp--preset--font-size--small);
+	margin-block-end: 2rem;
+	gap: 1rem;
+}
+
+.ceredis-single-post-meta .wp-block-post-date,
+.ceredis-single-post-meta .wp-block-post-terms,
+.ceredis-single-post-meta .wp-block-post-author {
+	margin: 0;
+}
+
+.ceredis-single-post-meta a {
+	color: var(--wp--preset--color--ceredis-blue);
+	text-decoration: none;
+}
+
+.ceredis-single-post-meta a:hover {
+	color: var(--wp--preset--color--ceredis-fuchsia);
+	text-decoration: underline;
+}
+
+/* Single post content */
+.ceredis-single-post-content {
+	gap: 1.5rem;
+}
+
+.ceredis-single-post-content :where(h1, h2, h3, h4, h5, h6, .wp-block-heading) {
+	color: var(--wp--preset--color--ceredis-ink);
+}
+
+.ceredis-single-post-content :where(p, li, blockquote) {
+	color: var(--wp--preset--color--ceredis-ink);
+	line-height: 1.7;
+}
+
+.ceredis-single-post-content p,
+.ceredis-single-post-content blockquote,
+.ceredis-single-post-content pre,
+.ceredis-single-post-content figure,
+.ceredis-single-post-content .wp-block-columns {
+	max-width: 80ch;
+	margin-inline: auto;
+}
+
+.ceredis-single-post-content :where(h2, h3, h4) {
+	margin-block: 1.5rem 1rem;
+}
+
+.ceredis-single-post-content :where(h2) {
+	font-size: var(--wp--preset--font-size--heading-2);
+	border-block-end: 1px solid var(--wp--preset--color--ceredis-border);
+	padding-block-end: 0.75rem;
+}
+
+.ceredis-single-post-content :where(h3) {
+	font-size: var(--wp--preset--font-size--heading-3);
+}
+
+/* Single post content - lists */
+.ceredis-single-post-content ul,
+.ceredis-single-post-content ol {
+	max-width: 80ch;
+	margin-inline: auto;
+	padding-inline-start: 1.5rem;
+	margin-block: 1rem;
+}
+
+.ceredis-single-post-content li {
+	margin-block-end: 0.5rem;
+}
+
+/* Single post content - blockquotes */
+.ceredis-single-post-content blockquote {
+	border-inline-start: 4px solid var(--wp--preset--color--ceredis-cyan);
+	padding-inline-start: 1rem;
+	color: var(--wp--preset--color--ceredis-deep);
+	font-style: italic;
+}
+
+/* Single post content - images and media */
+.ceredis-single-post-content img,
+.ceredis-single-post-content figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+	border-radius: var(--ceredis-radius-md);
+	margin-block: 1.5rem;
+}
+
+.ceredis-single-post-content figcaption {
+	text-align: center;
+	color: var(--wp--preset--color--ceredis-ink);
+	font-size: var(--wp--preset--font-size--small);
+	margin-block-start: 0.75rem;
+}
+
+.ceredis-single-post-content .wp-block-embed {
+	margin-block: 1.5rem;
+}
+
+.ceredis-single-post-content .wp-block-embed__wrapper {
+	border-radius: var(--ceredis-radius-md);
+	overflow: hidden;
+}
+
+/* Single post footer */
+.ceredis-single-post-footer {
+	margin-block-start: 3rem;
+	padding-block-start: 2rem;
+	border-block-start: 1px solid var(--wp--preset--color--ceredis-border);
+}
+
+.ceredis-single-post-footer .wp-block-post-terms {
+	margin-block-end: 1.5rem;
+	color: var(--wp--preset--color--ceredis-blue);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/* Post navigation */
+.ceredis-post-navigation {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-block-start: 2rem;
+}
+
+.ceredis-post-navigation .wp-block-post-navigation-link {
+	flex: 1 1 45%;
+	min-width: 200px;
+	padding: 1rem;
+	border: 1px solid var(--wp--preset--color--ceredis-border);
+	border-radius: var(--ceredis-radius-md);
+	background: var(--wp--preset--color--ceredis-white);
+	transition: border-color var(--ceredis-transition), box-shadow var(--ceredis-transition);
+}
+
+.ceredis-post-navigation .wp-block-post-navigation-link:hover {
+	border-color: var(--wp--preset--color--ceredis-cyan);
+	box-shadow: var(--ceredis-shadow-card);
+}
+
+.ceredis-post-navigation .wp-block-post-navigation-link__label {
+	color: var(--wp--preset--color--ceredis-blue);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.ceredis-post-navigation .wp-block-post-navigation-link__title {
+	color: var(--wp--preset--color--ceredis-ink);
+	font-weight: 700;
+	margin-block-start: 0.25rem;
+}
+
+/* Blog archive refinements */
+.ceredis-blog-archive .wp-block-query {
+	margin-block: 2rem;
+}
+
+.ceredis-blog-archive .wp-block-post-title a {
+	color: var(--wp--preset--color--ceredis-ink);
+	text-decoration: none;
+	font-size: var(--wp--preset--font-size--heading-3);
+	line-height: 1.3;
+}
+
+.ceredis-blog-archive .wp-block-post-title a:hover {
+	color: var(--wp--preset--color--ceredis-blue);
+	text-decoration: underline;
+}
+
+.ceredis-blog-archive .ceredis-post-category {
+	color: var(--wp--preset--color--ceredis-fuchsia);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-block: 0 0.75rem;
+}
+
+/* Blog cards consistent spacing */
+.ceredis-blog-archive .ceredis-card {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ceredis-blog-archive .ceredis-card > :last-child {
+	margin-block-end: 0;
+}
+
+/* Responsive adjustments for single post */
+@media (max-width: 781px) {
+	.ceredis-single-post-meta {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.ceredis-post-navigation {
+		flex-direction: column;
+	}
+
+	.ceredis-post-navigation .wp-block-post-navigation-link {
+		flex: 1 1 100%;
+	}
+}
+
+@media (max-width: 599px) {
+	.ceredis-single-post {
+		padding-block: 1.5rem;
+	}
+
+	.ceredis-single-post-content p,
+	.ceredis-single-post-content blockquote,
+	.ceredis-single-post-content pre,
+	.ceredis-single-post-content figure,
+	.ceredis-single-post-content .wp-block-columns,
+	.ceredis-single-post-content ul,
+	.ceredis-single-post-content ol {
+		max-width: 100%;
+	}
+}
+
+/* Ensure single post content paragraphs have proper spacing */
+.ceredis-single-post-content p + p {
+	margin-block-start: 1.25rem;
+}
+
+.ceredis-single-post-content p + :where(h2, h3, h4, h5, h6) {
+	margin-block-start: 2rem;
+}
+
+:where(h2, h3, h4, h5, h6) + .ceredis-single-post-content p {
+	margin-block-start: 1rem;
+}
+
+/* ===================================================================
+   Responsive corrections for Blog (Phase 2C)
+   =================================================================== */
+
+/* Fix: Alignwide containers in single post and blog archive
+   These containers need proper width constraints to prevent horizontal overflow
+   on all screen sizes. The default WordPress alignwide behavior doesn't apply
+   to nested .wp-block-group.alignwide elements in custom templates. */
+.ceredis-single-post > .wp-block-group.alignwide,
+.ceredis-blog-archive > .wp-block-group.alignwide {
+	box-sizing: border-box;
+	width: calc(100% - var(--ceredis-gutter) - var(--ceredis-gutter));
+	max-width: var(--ceredis-content-width, 1200px);
+	margin-inline: auto;
+}
+
+/* Fix: Single post container needs horizontal padding for mobile */
+.ceredis-single-post {
+	padding-inline: var(--ceredis-gutter);
+}
+
+/* Fix: Blog archive container needs horizontal padding for mobile */
+.ceredis-blog-archive {
+	padding-inline: var(--ceredis-gutter);
+}
+
+/* Responsive table styling for single post and blog archive
+   Ensures tables remain readable on small screens with horizontal scrolling */
+.ceredis-single-post-content .wp-block-table,
+.ceredis-blog-archive .wp-block-table {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	border-collapse: collapse;
+	margin-block: 1.5rem;
+}
+
+.ceredis-single-post-content .wp-block-table table,
+.ceredis-blog-archive .wp-block-table table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 100%;
+}
+
+.ceredis-single-post-content .wp-block-table th,
+.ceredis-single-post-content .wp-block-table td,
+.ceredis-blog-archive .wp-block-table th,
+.ceredis-blog-archive .wp-block-table td {
+	padding: 0.75rem;
+	border: 1px solid var(--wp--preset--color--ceredis-border);
+	text-align: left;
+	vertical-align: top;
+}
+
+.ceredis-single-post-content .wp-block-table thead,
+.ceredis-blog-archive .wp-block-table thead {
+	background-color: var(--wp--preset--color--ceredis-surface);
+}
+
+.ceredis-single-post-content .wp-block-table th,
+.ceredis-blog-archive .wp-block-table th {
+	font-weight: 700;
+	color: var(--wp--preset--color--ceredis-ink);
+	background-color: var(--wp--preset--color--ceredis-surface);
+}
+
+.ceredis-single-post-content .wp-block-table tbody tr:nth-child(even),
+.ceredis-blog-archive .wp-block-table tbody tr:nth-child(even) {
+	background-color: var(--wp--preset--color--ceredis-pale-cyan);
+}
+
+/* Responsive table: ensure minimum width for readability
+   Prevents table cells from becoming too narrow */
+.ceredis-single-post-content .wp-block-table td,
+.ceredis-single-post-content .wp-block-table th,
+.ceredis-blog-archive .wp-block-table td,
+.ceredis-blog-archive .wp-block-table th {
+	min-width: 100px;
+	word-break: normal;
+	white-space: normal;
+}
+
+/* Table container: visual indicator for horizontal scroll on mobile */
+@media (max-width: 781px) {
+	.ceredis-single-post-content .wp-block-table,
+	.ceredis-blog-archive .wp-block-table {
+		border: 1px solid var(--wp--preset--color--ceredis-border);
+		border-radius: var(--ceredis-radius-md);
+		background-color: var(--wp--preset--color--ceredis-white);
+		box-shadow: 0 0 0 1px var(--wp--preset--color--ceredis-border) inset;
+	}
+}
+
+/* Additional responsive adjustments for single post content */
+@media (max-width: 781px) {
+	/* Reduce max-width constraint on mobile for better readability */
+	.ceredis-single-post-content p,
+	.ceredis-single-post-content blockquote,
+	.ceredis-single-post-content pre,
+	.ceredis-single-post-content figure,
+	.ceredis-single-post-content .wp-block-columns,
+	.ceredis-single-post-content ul,
+	.ceredis-single-post-content ol {
+		max-width: 100%;
+	}
+}
+
+/* Ensure blog cards have proper spacing on mobile */
+@media (max-width: 781px) {
+	.ceredis-blog-archive .wp-block-query {
+		gap: 1.5rem;
+	}
+
+	.ceredis-blog-archive .wp-block-query .ceredis-card {
+		min-width: 100%;
+	}
+}
+
+/* Partners cards */
+.ceredis-section.ceredis-sponsors .ceredis-partners__cards {
+    align-items: stretch;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    padding-top: clamp(1.5rem, 3vw, 2rem);
+    overflow: visible;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card.ceredis-partner-card--fuchsia {
+    border-top: 3px solid var(--wp--preset--color--ceredis-fuchsia, #D81B72);
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card.ceredis-partner-card--cyan {
+    border-top: 3px solid var(--wp--preset--color--ceredis-cyan, #00A3E0);
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card::before {
+    display: none;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card h3.wp-block-heading {
+    color: var(--wp--preset--color--ceredis-fuchsia, #D81B72);
+    margin-top: 0;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-list {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 1.25rem;
+    align-self: flex-start;
+    width: 100%;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons {
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+/* Partners buttons */
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--fuchsia .wp-block-button__link,
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--fuchsia .wp-block-button__link:visited {
+    background-color: var(--wp--preset--color--ceredis-blue, #113b65);
+    color: #ffffff;
+    border: none;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--fuchsia .wp-block-button__link:hover,
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--fuchsia .wp-block-button__link:focus {
+    background-color: var(--wp--preset--color--ceredis-fuchsia-hover, #b0165b);
+    color: #ffffff;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--fuchsia .wp-block-button__link:focus-visible {
+    outline: 2px solid var(--wp--preset--color--ceredis-fuchsia, #D81B72);
+    outline-offset: 2px;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--cyan .wp-block-button__link,
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--cyan .wp-block-button__link:visited {
+    background-color: var(--wp--preset--color--ceredis-cyan, #00A3E0);
+    color: #0a2948;
+    border: none;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--cyan .wp-block-button__link:hover,
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--cyan .wp-block-button__link:focus {
+    background-color: #4fc3ea;
+    color: #0a2948;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--cyan .wp-block-button__link:focus-visible {
+    outline: 2px solid var(--wp--preset--color--ceredis-fuchsia, #D81B72);
+    outline-offset: 2px;
+}
+
+.ceredis-section.ceredis-sponsors .ceredis-partner-card .wp-block-buttons .wp-block-button.ceredis-button--cyan .wp-block-button__link:focus-visible {
+    outline: 2px solid var(--wp--preset--color--ceredis-fuchsia, #D81B72);
+    outline-offset: 2px;
+}
+
+/* Partners footer */
+.ceredis-partners__footer {
+    margin-top: clamp(2rem, 5vw, 3rem);
+    gap: 0.75rem 1.5rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.ceredis-partners__footer p {
+    margin: 0;
+    position: relative;
+}
+
+.ceredis-partners__footer p + p::before {
+    content: "·";
+    margin-right: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 781px) {
+    .ceredis-partners__footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .ceredis-partners__footer p + p::before {
+        content: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .ceredis-hero-pills .ceredis-pill,
+    .ceredis-audiences .ceredis-chip {
+        white-space: normal;
+    }
+}
+/* === CEREDIS partners page v1 ===================================================
+   Page /partenaires/ : mise en forme d'après la maquette validée.
+   Portée : .ceredis-partners-page (classe portée par le <main> du template
+   page-partenaires.html). Rien ici ne touche l'accueil ni les autres pages.
+   ================================================================================ */
+
+.ceredis-partners-page [id] {
+    scroll-margin-top: 100px;
+}
+
+/* --- Rythme et alignement (annule le centrage du layout « constrained ») --- */
+.ceredis-partners-page .ceredis-section__inner {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* WordPress impose « margin-inline: auto !important » aux enfants d'un groupe
+   « constrained » : ils se centrent et se réduisent à leur contenu (cartes écrasées).
+   On neutralise ce comportement dans toute la page ; les exceptions (FAQ centrée)
+   le rétablissent plus bas avec une spécificité supérieure. */
+body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignfull):not(.alignleft):not(.alignright)) {
+    max-width: none;
+    margin-inline: 0 !important;
+}
+
+.ceredis-partners-page .ceredis-section__inner > * {
+    margin-block: 0;
+}
+
+.ceredis-partners-page .ceredis-section__inner > .ceredis-lead {
+    max-width: 42rem;
+}
+
+.ceredis-partners-page .ceredis-section__inner > h2.wp-block-heading {
+    max-width: 32ch;
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    line-height: 1.15;
+}
+
+.ceredis-partners-page .ceredis-section__inner > h3.wp-block-heading {
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.ceredis-partners-page .wp-block-buttons {
+    gap: 0.75rem;
+}
+
+/* --- Fonds de section --- */
+.ceredis-partners-page .ceredis-partners-page__hero {
+    background-color: var(--wp--preset--color--ceredis-blue);
+}
+
+.ceredis-partners-page .ceredis-partners-page__why,
+.ceredis-partners-page .ceredis-partners-page__impact,
+.ceredis-partners-page .ceredis-partners-page__faq {
+    background-color: var(--wp--preset--color--ceredis-surface);
+}
+
+.ceredis-partners-page .ceredis-partners-page__enterprises,
+.ceredis-partners-page .ceredis-partners-page__process,
+.ceredis-partners-page .ceredis-partners-page__commitments {
+    color: var(--wp--preset--color--ceredis-ink);
+    background-color: var(--wp--preset--color--ceredis-white);
+}
+
+.ceredis-partners-page .ceredis-partners-page__institutions,
+.ceredis-partners-page .ceredis-partners-page__contact {
+    background-color: var(--wp--preset--color--ceredis-deep);
+}
+
+/* --- Boutons (couleurs explicites : jamais texte sur fond identique) --- */
+.ceredis-partners-page .ceredis-button--cyan .wp-block-button__link {
+    color: #0a2948;
+    border-color: var(--wp--preset--color--ceredis-cyan);
+    background-color: var(--wp--preset--color--ceredis-cyan);
+}
+
+.ceredis-partners-page .ceredis-button--cyan .wp-block-button__link:hover,
+.ceredis-partners-page .ceredis-button--cyan .wp-block-button__link:focus-visible {
+    color: #0a2948;
+    border-color: #4fc3ea;
+    background-color: #4fc3ea;
+}
+
+/* Sur fond blanc, le bouton principal est fuchsia et le secondaire contour bleu */
+.ceredis-partners-page .ceredis-partners-page__enterprises .ceredis-button--cyan .wp-block-button__link {
+    color: var(--wp--preset--color--ceredis-white);
+    border-color: var(--wp--preset--color--ceredis-fuchsia);
+    background-color: var(--wp--preset--color--ceredis-fuchsia);
+}
+
+.ceredis-partners-page .ceredis-partners-page__enterprises .ceredis-button--cyan .wp-block-button__link:hover,
+.ceredis-partners-page .ceredis-partners-page__enterprises .ceredis-button--cyan .wp-block-button__link:focus-visible {
+    color: var(--wp--preset--color--ceredis-white);
+    border-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+    background-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+}
+
+.ceredis-partners-page .ceredis-partners-page__enterprises .ceredis-button--outline .wp-block-button__link {
+    color: var(--wp--preset--color--ceredis-blue);
+    border: 2px solid var(--wp--preset--color--ceredis-blue);
+    background-color: transparent;
+}
+
+.ceredis-partners-page .ceredis-partners-page__enterprises .ceredis-button--outline .wp-block-button__link:hover,
+.ceredis-partners-page .ceredis-partners-page__enterprises .ceredis-button--outline .wp-block-button__link:focus-visible {
+    color: var(--wp--preset--color--ceredis-white);
+    background-color: var(--wp--preset--color--ceredis-blue);
+}
+
+/* Sur fond bleu foncé, le contour est blanc */
+.ceredis-partners-page .ceredis-partners-page__institutions .ceredis-button--outline .wp-block-button__link {
+    color: var(--wp--preset--color--ceredis-white);
+    border: 2px solid var(--wp--preset--color--ceredis-white);
+    background-color: transparent;
+}
+
+.ceredis-partners-page .ceredis-partners-page__institutions .ceredis-button--outline .wp-block-button__link:hover,
+.ceredis-partners-page .ceredis-partners-page__institutions .ceredis-button--outline .wp-block-button__link:focus-visible {
+    color: var(--wp--preset--color--ceredis-deep);
+    background-color: var(--wp--preset--color--ceredis-white);
+}
+
+/* --- Hero --- */
+.ceredis-partners-page .ceredis-partners-page__hero h1.wp-block-heading {
+    max-width: 20ch;
+    font-size: clamp(2rem, 4.6vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-block-start: 0.75rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card {
+    height: auto;
+    gap: 0.75rem;
+    border-top: 3px solid var(--wp--preset--color--ceredis-fuchsia);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(2) {
+    border-top-color: var(--wp--preset--color--ceredis-cyan);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards .ceredis-card > * {
+    max-width: none;
+    margin-block: 0;
+    margin-inline: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards .ceredis-eyebrow {
+    font-size: 0.75rem;
+    color: var(--wp--preset--color--ceredis-fuchsia-hover);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(2) .ceredis-eyebrow {
+    color: var(--wp--preset--color--ceredis-deep);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards .wp-block-heading {
+    font-size: 1.35rem;
+    line-height: 1.25;
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards .wp-block-buttons {
+    margin-block-start: auto;
+    padding-block-start: 0.75rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(1) .wp-block-button__link {
+    color: var(--wp--preset--color--ceredis-white);
+    border: 2px solid var(--wp--preset--color--ceredis-fuchsia);
+    background-color: var(--wp--preset--color--ceredis-fuchsia);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(1) .wp-block-button__link:hover,
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(1) .wp-block-button__link:focus-visible {
+    color: var(--wp--preset--color--ceredis-white);
+    border-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+    background-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(2) .wp-block-button__link {
+    color: var(--wp--preset--color--ceredis-white);
+    border: 2px solid var(--wp--preset--color--ceredis-blue);
+    background-color: var(--wp--preset--color--ceredis-blue);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(2) .wp-block-button__link:hover,
+.ceredis-partners-page .ceredis-partners-page__entry-cards > .ceredis-card:nth-child(2) .wp-block-button__link:focus-visible {
+    color: var(--wp--preset--color--ceredis-white);
+    border-color: var(--wp--preset--color--ceredis-deep);
+    background-color: var(--wp--preset--color--ceredis-deep);
+}
+
+.ceredis-partners-page .ceredis-partners-page__entry-cards .wp-block-button__link:focus-visible {
+    outline: 3px solid var(--wp--preset--color--ceredis-cyan);
+    outline-offset: 3px;
+}
+
+.ceredis-partners-page .ceredis-partners-page__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+}
+
+/* --- Pourquoi nous agissons --- */
+.ceredis-partners-page .ceredis-partners-page__why-highlight {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__why-highlight > * {
+    max-width: none;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__why-big {
+    max-width: 26ch;
+    color: var(--wp--preset--color--ceredis-ink);
+    font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+}
+
+.ceredis-partners-page .ceredis-partners-page__why-source {
+    color: var(--wp--preset--color--ceredis-ink);
+    font-size: 0.8125rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.ceredis-partners-page .ceredis-card {
+    height: auto;
+    gap: 0.75rem;
+}
+
+.ceredis-partners-page .ceredis-card > * {
+    margin-block: 0;
+}
+
+/* --- Entreprises : paliers --- */
+.ceredis-partners-page .ceredis-partners-page__tiers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__tiers > .ceredis-tier {
+    height: auto;
+    border-top-width: 3px;
+}
+
+.ceredis-partners-page .ceredis-tier__label {
+    display: inline-flex;
+    align-self: flex-start;
+    margin: 0;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.ceredis-partners-page .ceredis-tier--fuchsia .ceredis-tier__label {
+    color: var(--wp--preset--color--ceredis-fuchsia-hover);
+    background-color: var(--wp--preset--color--ceredis-pale-fuchsia);
+}
+
+.ceredis-partners-page .ceredis-tier--cyan .ceredis-tier__label {
+    color: var(--wp--preset--color--ceredis-deep);
+    background-color: var(--wp--preset--color--ceredis-pale-cyan);
+}
+
+.ceredis-partners-page .ceredis-tier--navy .ceredis-tier__label {
+    color: var(--wp--preset--color--ceredis-blue);
+    background-color: color-mix(in srgb, var(--wp--preset--color--ceredis-blue) 10%, white);
+}
+
+.ceredis-partners-page .ceredis-tier .wp-block-heading {
+    font-size: 1.35rem;
+    line-height: 1.25;
+}
+
+.ceredis-partners-page .ceredis-tier .wp-block-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0;
+    padding-inline-start: 1.1rem;
+    list-style: disc;
+}
+
+.ceredis-partners-page .ceredis-tier .wp-block-list li {
+    color: var(--wp--preset--color--ceredis-ink);
+}
+
+.ceredis-partners-page .ceredis-tier > p:last-child {
+    margin-block-start: auto;
+    padding-block-start: 0.9rem;
+    border-block-start: 1px solid var(--wp--preset--color--ceredis-border);
+    font-size: 0.9rem;
+}
+
+/* --- Entreprises : bandeau et calendrier --- */
+.ceredis-partners-page .ceredis-partners-page__banner {
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    border: 1px solid var(--wp--preset--color--ceredis-border);
+    border-radius: 16px;
+    background-color: var(--wp--preset--color--ceredis-surface);
+}
+
+.ceredis-partners-page .ceredis-partners-page__banner > * {
+    max-width: none;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__calendar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__calendar > * {
+    max-width: none;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__calendar-row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding-block-start: 0.75rem;
+    border-block-start: 3px solid var(--wp--preset--color--ceredis-cyan);
+}
+
+.ceredis-partners-page .ceredis-partners-page__calendar-row p {
+    margin: 0;
+}
+
+/* --- Institutions --- */
+.ceredis-partners-page .ceredis-partners-page__instit-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__instit-blocks > .ceredis-card {
+    border-top: 3px solid var(--wp--preset--color--ceredis-cyan);
+}
+
+.ceredis-partners-page .ceredis-partners-page__instit-blocks .wp-block-heading {
+    font-size: 1.2rem;
+    line-height: 1.3;
+}
+
+.ceredis-partners-page .ceredis-partners-page__instit-lower {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+}
+
+.ceredis-partners-page .ceredis-partners-page__dossier,
+.ceredis-partners-page .ceredis-partners-page__programs-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__dossier > *,
+.ceredis-partners-page .ceredis-partners-page__programs-wrap > * {
+    max-width: none;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__dossier .wp-block-heading,
+.ceredis-partners-page .ceredis-partners-page__programs-wrap > .wp-block-heading {
+    font-size: 1.25rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ceredis-partners-page .ceredis-partners-page__checklist li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__checklist li::before {
+    flex: none;
+    content: "✓";
+    color: var(--wp--preset--color--ceredis-cyan);
+    font-weight: 700;
+}
+
+.ceredis-partners-page .ceredis-partners-page__programs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__programs .ceredis-card {
+    border-color: rgb(255 255 255 / 20%);
+    background-color: rgb(255 255 255 / 8%);
+    box-shadow: none;
+}
+
+.ceredis-partners-page .ceredis-partners-page__programs .ceredis-card :is(h4, p) {
+    color: var(--wp--preset--color--ceredis-white);
+}
+
+.ceredis-partners-page .ceredis-partners-page__programs .ceredis-card h4 {
+    font-size: 1.05rem;
+}
+
+/* --- Étapes --- */
+.ceredis-partners-page .ceredis-partners-page__steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-block-start: 1rem;
+    border-block-start: 3px solid var(--wp--preset--color--ceredis-cyan);
+}
+
+.ceredis-partners-page .ceredis-partners-page__step > * {
+    max-width: none;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__step-num {
+    color: var(--wp--preset--color--ceredis-fuchsia-hover);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.ceredis-partners-page .ceredis-partners-page__step h3.wp-block-heading {
+    font-size: 1.125rem;
+    line-height: 1.3;
+}
+
+/* --- Impact : tableau --- */
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--wp--preset--color--ceredis-border);
+    border-radius: 14px;
+    background-color: var(--wp--preset--color--ceredis-white);
+}
+
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table table {
+    width: 100%;
+    border: 0;
+    border-collapse: collapse;
+}
+
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table th,
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table td {
+    padding: 0.8rem 1.1rem;
+    border: 0;
+    border-block-end: 1px solid var(--wp--preset--color--ceredis-border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table thead th {
+    color: var(--wp--preset--color--ceredis-white);
+    background-color: var(--wp--preset--color--ceredis-deep);
+    font-weight: 700;
+}
+
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table tbody tr:last-child td {
+    border-block-end: 0;
+    background-color: var(--wp--preset--color--ceredis-pale-fuchsia);
+}
+
+.ceredis-partners-page .ceredis-partners-page__impact .wp-block-table tbody tr:last-child td:first-child {
+    font-weight: 700;
+}
+
+/* --- Engagements --- */
+.ceredis-partners-page .ceredis-partners-page__commitments-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__commitments-grid .wp-block-heading {
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+.ceredis-partners-page .ceredis-partners-page__commitments-grid p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+}
+
+.ceredis-partners-page .ceredis-partners-page__proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__proof {
+    margin: 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--wp--preset--color--ceredis-border);
+    border-radius: 12px;
+    background-color: var(--wp--preset--color--ceredis-white);
+    font-weight: 700;
+}
+
+.ceredis-partners-page .ceredis-partners-page__proof a {
+    text-decoration: none;
+}
+
+/* --- FAQ --- */
+.ceredis-partners-page .ceredis-partners-page__faq .ceredis-section__inner {
+    gap: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq .ceredis-eyebrow,
+.ceredis-partners-page .ceredis-partners-page__faq h2.wp-block-heading {
+    margin-inline: auto !important;
+    text-align: center;
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq h2.wp-block-heading {
+    margin-block-end: 1.5rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq .ceredis-section__inner > details {
+    width: 100%;
+    max-width: 46rem;
+    margin-inline: auto !important;
+    border-block-end: 1px solid var(--wp--preset--color--ceredis-border);
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 44px;
+    padding-block: 0.9rem;
+    color: var(--wp--preset--color--ceredis-deep);
+    font-weight: 700;
+    list-style: none;
+    cursor: pointer;
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq summary::after {
+    flex: none;
+    content: "+";
+    color: var(--wp--preset--color--ceredis-fuchsia-hover);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq details[open] > summary::after {
+    content: "−";
+}
+
+.ceredis-partners-page .ceredis-partners-page__faq details > p {
+    margin: 0 0 1rem;
+    color: var(--wp--preset--color--ceredis-ink);
+}
+
+/* --- Contact --- */
+.ceredis-partners-page .ceredis-partners-page__contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+}
+
+.ceredis-partners-page .ceredis-partners-page__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ceredis-partners-page .ceredis-partners-page__contact-info > * {
+    max-width: none;
+    margin: 0;
+}
+
+.ceredis-partners-page .ceredis-partners-page__contact-info h2.wp-block-heading {
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    line-height: 1.15;
+}
+
+.ceredis-partners-page .ceredis-partners-page__contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* --- Formulaire de demande de partenariat (bloc ceredis/partner-form) --- */
+.ceredis-partners-page .ceredis-partner-form {
+    box-sizing: border-box;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 20px;
+    color: var(--wp--preset--color--ceredis-ink);
+    background-color: var(--wp--preset--color--ceredis-white);
+    box-shadow: 0 16px 40px rgb(0 0 0 / 18%);
+}
+
+.ceredis-partners-page .ceredis-partner-form h3.ceredis-partner-form__title {
+    margin: 0 0 1rem;
+    color: var(--wp--preset--color--ceredis-ink);
+    font-size: 1.35rem;
+}
+
+.ceredis-partners-page .ceredis-partner-form a {
+    color: var(--wp--preset--color--ceredis-blue);
+    text-decoration: underline;
+}
+
+.ceredis-partners-page .ceredis-partner-form__form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 1rem;
+}
+
+.ceredis-partners-page .ceredis-partner-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+}
+
+.ceredis-partners-page .ceredis-partner-form__field--full,
+.ceredis-partners-page .ceredis-partner-form__fieldset {
+    grid-column: 1 / -1;
+}
+
+.ceredis-partners-page .ceredis-partner-form__fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.ceredis-partners-page .ceredis-partner-form legend,
+.ceredis-partners-page .ceredis-partner-form__field > label {
+    padding: 0;
+    color: var(--wp--preset--color--ceredis-ink);
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.ceredis-partners-page .ceredis-partner-form legend {
+    margin-block-end: 0.4rem;
+}
+
+.ceredis-partners-page .ceredis-partner-form__choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.ceredis-partners-page .ceredis-partner-form__choice {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--wp--preset--color--ceredis-border);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.ceredis-partners-page .ceredis-partner-form__choice:has(input:checked) {
+    border-color: var(--wp--preset--color--ceredis-fuchsia);
+    background-color: var(--wp--preset--color--ceredis-pale-fuchsia);
+}
+
+.ceredis-partners-page .ceredis-partner-form input[type="text"],
+.ceredis-partners-page .ceredis-partner-form input[type="email"],
+.ceredis-partners-page .ceredis-partner-form input[type="tel"],
+.ceredis-partners-page .ceredis-partner-form select,
+.ceredis-partners-page .ceredis-partner-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--wp--preset--color--ceredis-blue);
+    border-radius: 10px;
+    color: var(--wp--preset--color--ceredis-ink);
+    background-color: var(--wp--preset--color--ceredis-white);
+    font: inherit;
+}
+
+.ceredis-partners-page .ceredis-partner-form textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.ceredis-partners-page .ceredis-partner-form__consent label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+}
+
+.ceredis-partners-page .ceredis-partner-form__consent input {
+    flex: none;
+    width: auto;
+    margin-block-start: 0.2rem;
+}
+
+.ceredis-partners-page .ceredis-partner-form__submit {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.65rem 1.375rem;
+    border: 2px solid var(--wp--preset--color--ceredis-fuchsia);
+    border-radius: 999px;
+    color: var(--wp--preset--color--ceredis-white);
+    background-color: var(--wp--preset--color--ceredis-fuchsia);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ceredis-partners-page .ceredis-partner-form__submit:hover,
+.ceredis-partners-page .ceredis-partner-form__submit:focus-visible {
+    border-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+    background-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+}
+
+.ceredis-partners-page .ceredis-partner-form :where(input, select, textarea, button):focus-visible {
+    outline: 3px solid var(--wp--preset--color--ceredis-blue);
+    outline-offset: 2px;
+}
+
+.ceredis-partners-page .ceredis-partner-form__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.ceredis-partners-page .ceredis-partner-form__status {
+    margin-block-end: 1rem;
+    padding: 0.85rem 1rem;
+    border-inline-start: 4px solid;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+}
+
+.ceredis-partners-page .ceredis-partner-form__status--ok {
+    border-color: var(--wp--preset--color--ceredis-cyan);
+    color: var(--wp--preset--color--ceredis-deep);
+    background-color: var(--wp--preset--color--ceredis-pale-cyan);
+}
+
+.ceredis-partners-page .ceredis-partner-form__status--error {
+    border-color: var(--wp--preset--color--ceredis-fuchsia);
+    color: var(--wp--preset--color--ceredis-ink);
+    background-color: var(--wp--preset--color--ceredis-pale-fuchsia);
+}
+
+/* --- Grilles : annule la marge haute que WordPress ajoute à partir du 2e enfant
+   d'un groupe « flux » (sinon la 1re carte paraît plus haute que les suivantes) --- */
+.ceredis-partners-page :is(
+    .ceredis-partners-page__entry-cards,
+    .ceredis-partners-page__why-grid,
+    .ceredis-partners-page__tiers,
+    .ceredis-partners-page__calendar,
+    .ceredis-partners-page__instit-blocks,
+    .ceredis-partners-page__instit-lower,
+    .ceredis-partners-page__programs,
+    .ceredis-partners-page__steps,
+    .ceredis-partners-page__commitments-grid,
+    .ceredis-partners-page__proof-grid,
+    .ceredis-partners-page__contact-grid
+) > * {
+    margin-block: 0 !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1099px) {
+    .ceredis-partners-page .ceredis-partners-page__commitments-grid,
+    .ceredis-partners-page .ceredis-partners-page__steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 899px) {
+    .ceredis-partners-page .ceredis-partners-page__tiers,
+    .ceredis-partners-page .ceredis-partners-page__instit-blocks,
+    .ceredis-partners-page .ceredis-partners-page__instit-lower,
+    .ceredis-partners-page .ceredis-partners-page__contact-grid,
+    .ceredis-partners-page .ceredis-partners-page__proof-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ceredis-partners-page .ceredis-partners-page__calendar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 781px) {
+    .ceredis-partners-page .ceredis-partners-page__entry-cards,
+    .ceredis-partners-page .ceredis-partners-page__why-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 599px) {
+    .ceredis-partners-page .ceredis-partners-page__commitments-grid,
+    .ceredis-partners-page .ceredis-partners-page__steps,
+    .ceredis-partners-page .ceredis-partners-page__calendar,
+    .ceredis-partners-page .ceredis-partner-form__form,
+    .ceredis-partners-page .ceredis-partner-form__choices {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ceredis-partners-page .wp-block-buttons,
+    .ceredis-partners-page .wp-block-buttons .wp-block-button,
+    .ceredis-partners-page .wp-block-buttons .wp-block-button__link {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Tableau d'impact : lignes empilées sur mobile */
+    .ceredis-partners-page .ceredis-partners-page__impact .wp-block-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .ceredis-partners-page .ceredis-partners-page__impact .wp-block-table :is(tbody, tr, td) {
+        display: block;
+    }
+
+    .ceredis-partners-page .ceredis-partners-page__impact .wp-block-table tr {
+        border-block-end: 1px solid var(--wp--preset--color--ceredis-border);
+    }
+
+    .ceredis-partners-page .ceredis-partners-page__impact .wp-block-table td {
+        padding: 0.35rem 1rem;
+        border-block-end: 0;
+    }
+
+    .ceredis-partners-page .ceredis-partners-page__impact .wp-block-table td:first-child {
+        padding-block-start: 0.8rem;
+        font-weight: 700;
+    }
+
+    .ceredis-partners-page .ceredis-partners-page__impact .wp-block-table td:last-child {
+        padding-block-end: 0.8rem;
+    }
+}
+/* === /CEREDIS partners page v1 =================================================== */

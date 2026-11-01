@@ -14,7 +14,7 @@
 	<div class="wp-block-group alignwide">
 
 		<!-- wp:paragraph {"textColor":"ceredis-fuchsia","fontSize":"eyebrow"} -->
-		<p class="has-ceredis-fuchsia-color has-text-color has-eyebrow-font-size">QUI SOMMES-NOUS ?</p>
+		<p class="has-ceredis-fuchsia-color has-text-color has-eyebrow-font-size">QUI SOMMES-NOUS&nbsp;?</p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2} -->

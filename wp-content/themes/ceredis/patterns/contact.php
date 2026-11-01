@@ -22,19 +22,19 @@
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"fontSize":"lead"} -->
-		<p class="has-lead-font-size">Vous représentez un établissement scolaire, une organisation partenaire ou une structure intéressée par les projets de CEREDIS ? Nous serons heureux d’échanger avec vous.</p>
+		<p class="has-lead-font-size">Vous représentez un établissement scolaire, une organisation partenaire ou une structure intéressée par les projets de CEREDIS&nbsp;? Nous serons heureux d’échanger avec vous.</p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:paragraph -->
-		<p><strong>E-mail :</strong> <a href="mailto:contact@ceredis.net">contact@ceredis.net</a></p>
+		<p><strong>E-mail&nbsp;:</strong> <a href="mailto:contact@ceredis.net">contact@ceredis.net</a></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:paragraph -->
-		<p><strong>Téléphone :</strong> <a href="tel:+242064061534">(+242) 06 406 1534</a></p>
+		<p><strong>Téléphone&nbsp;:</strong> <a href="tel:+242064061534">(+242)&nbsp;06&nbsp;406&nbsp;1534</a></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:paragraph -->
-		<p><strong>Adresse opérationnelle :</strong> 43 B Avenue du Djoué — Quartier La Milice</p>
+		<p><strong>Adresse opérationnelle&nbsp;:</strong> 43 B Avenue du Djoué — Quartier La Milice</p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:buttons -->
