@@ -1,4 +1,4 @@
-FROM wordpress:7.1.2-php8.3-apache
+FROM wordpress:7.1.4-php8.5-apache
 
 # curl is required by Coolify's HTTP healthcheck.
 RUN set -eux; \
@@ -10,7 +10,7 @@ RUN set -eux; \
 RUN set -eux; \
     mkdir -p /usr/src/wordpress/wp-content/languages; \
     curl --fail --silent --show-error --location \
-      https://downloads.wordpress.org/translation/core/7.1.2/fr_FR.zip \
+      https://downloads.wordpress.org/translation/core/7.1.4/fr_FR.zip \
       --output /tmp/wordpress-fr_FR.zip; \
     unzip -o /tmp/wordpress-fr_FR.zip \
       -d /usr/src/wordpress/wp-content/languages; \
@@ -19,7 +19,7 @@ RUN set -eux; \
       /usr/src/wordpress/wp-content/languages
 
 # WP-CLI is included for controlled, explicit bootstrap/diagnostic operations.
-COPY --from=wordpress:cli-2.12.0-php8.3 /usr/local/bin/wp /usr/local/bin/wp
+COPY --from=wordpress:cli-2.12.0-php8.5 /usr/local/bin/wp /usr/local/bin/wp
 
 WORKDIR /usr/src/wordpress
 
@@ -37,6 +37,10 @@ RUN set -eux; \
         -e 's!DocumentRoot \$PWD!DocumentRoot /usr/src/wordpress!g' \
         -e 's!<Directory \$PWD>!<Directory /usr/src/wordpress>!g' \
         '{}' +; \
+    php_conf=/etc/apache2/conf-available/docker-php.conf; \
+    test "$(grep -Ec '^[[:space:]]*AllowOverride All[[:space:]]*$' "$php_conf")" -eq 1; \
+    sed -i -E 's/^[[:space:]]*AllowOverride All[[:space:]]*$/    AllowOverride FileInfo/' "$php_conf"; \
+    ! grep -Eq '^[[:space:]]*AllowOverride All[[:space:]]*$' "$php_conf"; \
     cp -s wp-config-docker.php wp-config.php
 
 COPY docker/apache-ceredis.conf /etc/apache2/conf-available/ceredis-wordpress.conf
