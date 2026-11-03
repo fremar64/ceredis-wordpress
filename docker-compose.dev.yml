@@ -2,3 +2,10 @@ services:
   wordpress:
     ports:
       - "8080:80"
+    environment:
+      DISALLOW_FILE_EDIT: "true"
+      DISALLOW_FILE_MODS: "false"
+      WP_DEBUG: "true"
+      WP_DEBUG_LOG: "true"
+      WP_DEBUG_DISPLAY: "false"
+      SCRIPT_DEBUG: "true"
