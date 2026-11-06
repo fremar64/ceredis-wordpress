@@ -630,7 +630,7 @@ documents de travail non encore suivis par Git. Par conséquent :
   - Remplacement des sélecteurs `:where(...)` (spécificité nulle) par des sélecteurs directs pour que la largeur de 80ch s'applique effectivement face aux règles WordPress `is-layout-constrained`.
   - `ul`/`ol` du contenu d'article : ajout de `max-width: 80ch` et `margin-inline: auto` pour aligner la colonne des listes avec celle des paragraphes, tout en conservant `padding-inline-start: 1.5rem`.
   - Mise à jour des media queries mobiles pour inclure les listes dans le passage à `max-width: 100%`.
-- Rapports produits dans `docs/blog/` : `rapport-audit-blog-ceredis.md`, `rapport-final-verification-blog-ceredis.md`, `rapport-final-mise-en-page-articles.md`.
+- Rapports de mise en page et d’audit du Blog : voir `docs/reports/blog/audits/` et `docs/reports/blog/mise-en-page/`. Les rapports d’intégration et de publication sont classés dans les sous-dossiers correspondants de `docs/reports/blog/`.
 
 ### Vérifications
 

@@ -12,3 +12,4 @@ wp-content/languages/
 *.log
 docker-data/
 .DS_Store
+.aider*
