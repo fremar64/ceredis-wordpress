@@ -42,7 +42,7 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "php -r '$$c=stream_context_create([\"http\"=>[\"header\"=>\"Host: \".getenv(\"WORDPRESS_DOMAIN\").\"\\r\\n\"]]); exit(@file_get_contents(\"http://127.0.0.1/wp-login.php\", false, $$c) === false);'"]
+      test: ["CMD-SHELL", "php -r '$$c=stream_context_create([\"http\"=>[\"header\"=>\"Host: \".getenv(\"WORDPRESS_DOMAIN\").\"\\r\\n\",\"follow_location\"=>0,\"ignore_errors\"=>true,\"timeout\"=>8]]); @file_get_contents(\"http://127.0.0.1/wp-login.php\", false, $$c); preg_match(\"/ (\\d{3}) /\", $$http_response_header[0] ?? \"\", $$m); exit(isset($$m[1]) && (int)$$m[1] < 400 ? 0 : 1);'"]
       interval: 30s
       timeout: 10s
       retries: 5
