@@ -266,6 +266,8 @@ function ceredis_school_prereg_render(): string {
 			<?php wp_nonce_field( 'ceredis_school_prereg', 'ceredis_school_prereg_nonce' ); ?>
 			<input type="hidden" name="ceredis_school_prereg_started" value="<?php echo esc_attr( (string) time() ); ?>">
 
+			<p class="ceredis-preregistration__required-note">Les champs marqués d'un * sont obligatoires.</p>
+
 			<div class="ceredis-preregistration__trap" aria-hidden="true">
 				<label for="csp-hp">Ne pas remplir
 					<input id="csp-hp" type="text" name="ceredis_school_prereg_hp" tabindex="-1" autocomplete="off">
@@ -273,7 +275,7 @@ function ceredis_school_prereg_render(): string {
 			</div>
 
 			<div class="ceredis-preregistration__field ceredis-preregistration__field--full">
-				<label for="csp-programme">Je m'intéresse à</label>
+				<label for="csp-programme">Je m'intéresse à <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<select id="csp-programme" name="programme" required>
 					<option value="" selected disabled>Choisissez une option</option>
 					<option value="rallye">Rallye scolaire (lycée)</option>
@@ -283,11 +285,11 @@ function ceredis_school_prereg_render(): string {
 			</div>
 
 			<div class="ceredis-preregistration__field">
-				<label for="csp-etablissement">Nom de l'établissement <span>(obligatoire)</span></label>
+				<label for="csp-etablissement">Nom de l'établissement <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<input id="csp-etablissement" type="text" name="etablissement" maxlength="160" autocomplete="organization" required>
 			</div>
 			<div class="ceredis-preregistration__field">
-				<label for="csp-statut">Statut <span>(obligatoire)</span></label>
+				<label for="csp-statut">Statut <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<select id="csp-statut" name="statut" required>
 					<option value="" selected disabled></option>
 					<option value="Public">Public</option>
@@ -295,7 +297,7 @@ function ceredis_school_prereg_render(): string {
 				</select>
 			</div>
 			<div class="ceredis-preregistration__field">
-				<label for="csp-ville">Ville <span>(obligatoire)</span></label>
+				<label for="csp-ville">Ville <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<input id="csp-ville" type="text" name="ville" maxlength="80" autocomplete="address-level2" required>
 			</div>
 			<div class="ceredis-preregistration__field">
@@ -304,7 +306,7 @@ function ceredis_school_prereg_render(): string {
 			</div>
 
 			<fieldset class="ceredis-preregistration__fieldset">
-				<legend>Niveaux concernés <span>(obligatoire)</span> — Rallye : Seconde, Première · ENAA : CP, CE1</legend>
+				<legend>Niveaux concernés <span class="ceredis-preregistration__req" aria-hidden="true">*</span> — Rallye : Seconde, Première · ENAA : CP, CE1</legend>
 				<div class="ceredis-preregistration__choices" aria-required="true">
 					<label class="ceredis-preregistration__choice" for="csp-niveau-seconde">
 						<input id="csp-niveau-seconde" type="checkbox" name="niveaux[]" value="Seconde">
@@ -340,7 +342,7 @@ function ceredis_school_prereg_render(): string {
 			</div>
 
 			<div class="ceredis-preregistration__field">
-				<label for="csp-nom">Nom et prénom du contact <span>(obligatoire)</span></label>
+				<label for="csp-nom">Nom et prénom du contact <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<input id="csp-nom" type="text" name="nom" maxlength="120" autocomplete="name" required>
 			</div>
 			<div class="ceredis-preregistration__field">
@@ -354,11 +356,11 @@ function ceredis_school_prereg_render(): string {
 				</select>
 			</div>
 			<div class="ceredis-preregistration__field">
-				<label for="csp-email">Adresse e-mail <span>(obligatoire)</span></label>
+				<label for="csp-email">Adresse e-mail <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<input id="csp-email" type="email" name="email" maxlength="254" autocomplete="email" required>
 			</div>
 			<div class="ceredis-preregistration__field">
-				<label for="csp-telephone">Téléphone <span>(obligatoire)</span></label>
+				<label for="csp-telephone">Téléphone <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<input id="csp-telephone" type="tel" name="telephone" maxlength="40" autocomplete="tel" required>
 			</div>
 
@@ -368,7 +370,7 @@ function ceredis_school_prereg_render(): string {
 			</div>
 
 			<fieldset class="ceredis-preregistration__fieldset ceredis-preregistration__fieldset--full">
-				<legend>Consentement <span>(obligatoire)</span></legend>
+				<legend>Consentement <span class="ceredis-preregistration__req" aria-hidden="true">*</span></legend>
 				<label class="ceredis-preregistration__consent" for="csp-consent">
 					<input id="csp-consent" type="checkbox" name="consent" value="1" required>
 					<span>J&#039;accepte que CEREDIS utilise ces informations pour me recontacter au sujet du Rallye.</span>

@@ -4,7 +4,7 @@ Theme URI: https://ceredis.net/
 Author: CEREDIS
 Author URI: https://ceredis.net/
 Description: Official editorial theme for the CEREDIS WordPress Multisite network.
-Version: 0.2.7
+Version: 0.2.8
 Requires at least: 7.1
 Requires PHP: 8.3
 License: GPL-2.0-or-later
@@ -3537,7 +3537,6 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	min-width: 0;
 	flex-direction: column;
 	justify-content: flex-end;
-	align-self: stretch;
 	gap: 0.35rem;
 	margin: 0;
 }
@@ -3562,8 +3561,16 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	font-weight: 600;
 }
 
-.ceredis-preregistration__choices {
-	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+.ceredis-preregistration__req {
+	color: var(--wp--preset--color--ceredis-fuchsia-hover);
+	white-space: nowrap;
+}
+
+.ceredis-preregistration__required-note {
+	grid-column: 1 / -1;
+	margin: 0;
+	color: var(--wp--preset--color--ceredis-ink);
+	font-size: 0.875rem;
 }
 
 .ceredis-preregistration__field--full {
@@ -3605,7 +3612,7 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 
 .ceredis-preregistration__choices {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 	gap: 0.65rem;
 }
 
@@ -3732,9 +3739,4 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	}
 }
 
-@media (min-width: 782px) {
-	.ceredis-preregistration__choices {
-		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-	}
-}
 /* === /CEREDIS school preregistration =========================================== */
