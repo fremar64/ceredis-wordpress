@@ -312,7 +312,7 @@ function ceredis_school_prereg_render(): string {
 				<legend>Consentement <span>(obligatoire)</span></legend>
 				<label class="ceredis-preregistration__consent" for="csp-consent">
 					<input id="csp-consent" type="checkbox" name="consent" value="1" required>
-					<span>TODO-CONTENT: texte de consentement à fournir.</span>
+					<span>J&#039;accepte que CEREDIS utilise ces informations pour me recontacter au sujet du Rallye.</span>
 				</label>
 				<?php $privacy_policy_url = get_privacy_policy_url(); ?>
 				<?php if ( '' !== $privacy_policy_url ) : ?>
