@@ -13,3 +13,24 @@ wp-content/languages/
 docker-data/
 .DS_Store
 .aider*
+
+# Documents de travail locaux
+/docs/
+
+# Staging de migration
+/migration-staging/
+
+# Exports locaux d'uploads
+uploads-local*
+
+# Exports et dumps SQL
+*.sql
+*.sql.gz
+
+# Archives d'export
+*.zip
+*.tgz
+*.tar.gz
+
+# Sauvegardes datées
+*.bak-*
