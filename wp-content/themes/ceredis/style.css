@@ -4,7 +4,7 @@ Theme URI: https://ceredis.net/
 Author: CEREDIS
 Author URI: https://ceredis.net/
 Description: Official editorial theme for the CEREDIS WordPress Multisite network.
-Version: 0.2.8
+Version: 0.2.9
 Requires at least: 7.1
 Requires PHP: 8.3
 License: GPL-2.0-or-later
@@ -3509,15 +3509,26 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 
 .ceredis-signup-contact__contact {
 	align-self: start;
+	position: static;
+}
+
+.ceredis-signup-contact__signup > :is(.wp-block-heading, .ceredis-lead, .ceredis-preregistration) {
+	width: 100%;
+	max-width: none;
+	margin-inline: 0 !important;
+}
+
+.ceredis-signup-contact__signup > .ceredis-lead {
+	text-align: left;
 }
 
 .ceredis-preregistration {
 	box-sizing: border-box;
-	padding: clamp(1.25rem, 3vw, 2rem);
-	border-radius: var(--ceredis-radius-md);
+	padding: 0;
+	border-radius: 0;
 	color: var(--wp--preset--color--ceredis-ink);
-	background-color: var(--wp--preset--color--ceredis-white);
-	box-shadow: var(--ceredis-shadow-card);
+	background: transparent;
+	box-shadow: none;
 }
 
 .ceredis-preregistration a {
@@ -3715,6 +3726,17 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 @media (max-width: 999px) {
 	.ceredis-signup-contact__grid {
 		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ceredis-signup-contact__contact {
+		position: static;
+	}
+}
+
+@media (min-width: 1000px) {
+	.ceredis-signup-contact__contact {
+		position: sticky;
+		top: 1.5rem;
 	}
 }
 
