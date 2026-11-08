@@ -11,8 +11,12 @@ const CEREDIS_PREREG_TO       = 'contact@ceredis.net';
 const CEREDIS_PREREG_MIN_SECS = 3;
 const CEREDIS_PREREG_MAX_SECS = 86400;
 
-function ceredis_school_prereg_redirect( string $status ): void {
-	$url = add_query_arg( 'preinscription', $status, home_url( '/' ) ) . '#inscription';
+function ceredis_school_prereg_redirect( string $status, string $field_error = '' ): void {
+	$args = array( 'preinscription' => $status );
+	if ( '' !== $field_error ) {
+		$args['preinscription_champs'] = $field_error;
+	}
+	$url = add_query_arg( $args, home_url( '/' ) ) . '#inscription';
 	wp_safe_redirect( $url );
 	exit;
 }
@@ -62,6 +66,52 @@ function ceredis_school_prereg_handle(): void {
 		ceredis_school_prereg_redirect( 'erreur' );
 	}
 
+	$programme = ceredis_school_prereg_choice( 'programme', array( 'rallye', 'enaa', 'les_deux' ), true );
+	if ( null === $programme ) {
+		ceredis_school_prereg_redirect( 'erreur', 'programme-niveaux' );
+	}
+
+	$programmes = array(
+		'rallye'   => array(
+			'label'  => 'Rallye scolaire (lycée)',
+			'niveaux' => array( 'Seconde', 'Première' ),
+			'sujet'  => '[Pré-inscription Rallye]',
+		),
+		'enaa'     => array(
+			'label'  => 'ENAA (CP et CE1)',
+			'niveaux' => array( 'CP', 'CE1' ),
+			'sujet'  => '[Pré-inscription ENAA]',
+		),
+		'les_deux' => array(
+			'label'  => 'Les deux',
+			'niveaux' => array( 'Seconde', 'Première', 'CP', 'CE1' ),
+			'sujet'  => '[Pré-inscription Rallye + ENAA]',
+		),
+	);
+
+	$niveaux = array();
+	if ( isset( $_POST['niveaux'] ) ) {
+		if ( ! is_array( $_POST['niveaux'] ) ) {
+			ceredis_school_prereg_redirect( 'erreur', 'programme-niveaux' );
+		}
+		foreach ( wp_unslash( $_POST['niveaux'] ) as $niveau ) {
+			if ( ! is_string( $niveau ) ) {
+				ceredis_school_prereg_redirect( 'erreur', 'programme-niveaux' );
+			}
+			$niveau = sanitize_text_field( $niveau );
+			if ( ! in_array( $niveau, array( 'Seconde', 'Première', 'CP', 'CE1' ), true ) ) {
+				ceredis_school_prereg_redirect( 'erreur', 'programme-niveaux' );
+			}
+			if ( in_array( $niveau, $programmes[ $programme ]['niveaux'], true ) ) {
+				$niveaux[] = $niveau;
+			}
+		}
+	}
+	$niveaux = array_values( array_unique( $niveaux ) );
+	if ( empty( $niveaux ) ) {
+		ceredis_school_prereg_redirect( 'erreur', 'programme-niveaux' );
+	}
+
 	$etablissement = ceredis_school_prereg_text( 'etablissement', 160 );
 	$statut        = ceredis_school_prereg_choice( 'statut', array( 'Public', 'Privé' ), true );
 	$ville         = ceredis_school_prereg_text( 'ville', 80 );
@@ -94,24 +144,6 @@ function ceredis_school_prereg_handle(): void {
 
 	$equipement = ceredis_school_prereg_choice( 'equipement', array( 'Oui', 'En partie', 'Non' ) );
 
-	$niveaux = array();
-	if ( isset( $_POST['niveaux'] ) ) {
-		if ( ! is_array( $_POST['niveaux'] ) ) {
-			ceredis_school_prereg_redirect( 'erreur' );
-		}
-		foreach ( wp_unslash( $_POST['niveaux'] ) as $niveau ) {
-			if ( ! is_string( $niveau ) ) {
-				ceredis_school_prereg_redirect( 'erreur' );
-			}
-			$niveau = sanitize_text_field( $niveau );
-			if ( ! in_array( $niveau, array( 'Seconde', 'Première' ), true ) ) {
-				ceredis_school_prereg_redirect( 'erreur' );
-			}
-			$niveaux[] = $niveau;
-		}
-		$niveaux = array_values( array_unique( $niveaux ) );
-	}
-
 	if (
 		null === $etablissement
 		|| '' === $etablissement
@@ -126,7 +158,6 @@ function ceredis_school_prereg_handle(): void {
 		|| '' === $telephone
 		|| null === $message
 		|| null === $equipement
-		|| empty( $niveaux )
 		|| '' === $email_raw
 		|| strlen( $email_raw ) > 254
 		|| ! is_email( $email )
@@ -147,8 +178,10 @@ function ceredis_school_prereg_handle(): void {
 		ceredis_school_prereg_redirect( 'erreur' );
 	}
 
-	$subject = '[Pré-inscription Rallye] ' . $etablissement;
+	$programme_label = $programmes[ $programme ]['label'];
+	$subject         = $programmes[ $programme ]['sujet'] . ' ' . $etablissement;
 	$body    = "Nom de l'établissement : {$etablissement}\n"
+		. "Programme : {$programme_label}\n"
 		. "Statut : {$statut}\n"
 		. "Ville : {$ville}\n"
 		. "Quartier ou arrondissement : {$quartier}\n"
@@ -183,11 +216,16 @@ function ceredis_school_prereg_handle(): void {
 	$receipt_subject = 'CEREDIS — Nous avons bien reçu votre pré-inscription au Rallye scolaire';
 	$receipt_body    = "Bonjour {$nom},\n\n"
 		. "Nous avons bien reçu la pré-inscription de {$etablissement} au Rallye scolaire CEREDIS. Merci de l'intérêt que vous portez à cette initiative.\n\n"
-		. "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Le calendrier ci-dessous est prévisionnel et reste soumis à la confirmation du financement de la première édition :\n"
-		. "- inscriptions des établissements : du 4 janvier au 27 février 2027 ;\n"
-		. "- préparation des élèves : du 1er mars au 15 mai 2027 ;\n"
-		. "- période du Rallye : du 17 mai au 30 juin 2027, avec les finales le 19 juin.\n\n"
-		. "À l'ouverture des inscriptions, nous reviendrons vers vous pour préciser les pièces nécessaires et les prochaines étapes.\n\n"
+		. ( 'enaa' === $programme
+			? "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Nous reviendrons vers vous pour étudier avec vous la participation de votre classe aux premières classes pilotes d'ENAA.\n\n"
+			: "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Le calendrier ci-dessous est prévisionnel et reste soumis à la confirmation du financement de la première édition :\n"
+				. "- inscriptions des établissements : du 4 janvier au 27 février 2027 ;\n"
+				. "- préparation des élèves : du 1er mars au 15 mai 2027 ;\n"
+				. "- période du Rallye : du 17 mai au 30 juin 2027, avec les finales le 19 juin.\n\n"
+				. ( 'les_deux' === $programme
+					? "Concernant ENAA, nous reviendrons vers vous pour étudier avec vous la participation de votre classe aux premières classes pilotes.\n\n"
+					: '' )
+				. "À l'ouverture des inscriptions, nous reviendrons vers vous pour préciser les pièces nécessaires et les prochaines étapes.\n\n" )
 		. "Pour toute question, répondez simplement à ce message.\n\n"
 		. "L'équipe CEREDIS\n"
 		. "https://ceredis.net";
@@ -217,6 +255,9 @@ function ceredis_school_prereg_render(): string {
 			<div class="ceredis-preregistration__status ceredis-preregistration__status--error" role="alert">
 				Votre demande n'a pas pu être envoyée. Vérifiez les champs obligatoires ou écrivez-nous à
 				<a href="mailto:contact@ceredis.net">contact@ceredis.net</a>.
+				<?php if ( isset( $_GET['preinscription_champs'] ) && is_string( $_GET['preinscription_champs'] ) && 'programme-niveaux' === sanitize_key( wp_unslash( $_GET['preinscription_champs'] ) ) ) : ?>
+					<p>Choisissez un programme et au moins un niveau concerné.</p>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
@@ -229,6 +270,16 @@ function ceredis_school_prereg_render(): string {
 				<label for="csp-hp">Ne pas remplir
 					<input id="csp-hp" type="text" name="ceredis_school_prereg_hp" tabindex="-1" autocomplete="off">
 				</label>
+			</div>
+
+			<div class="ceredis-preregistration__field ceredis-preregistration__field--full">
+				<label for="csp-programme">Je m'intéresse à</label>
+				<select id="csp-programme" name="programme" required>
+					<option value="" selected disabled>Choisissez une option</option>
+					<option value="rallye">Rallye scolaire (lycée)</option>
+					<option value="enaa">ENAA (CP et CE1)</option>
+					<option value="les_deux">Les deux</option>
+				</select>
 			</div>
 
 			<div class="ceredis-preregistration__field">
@@ -253,7 +304,7 @@ function ceredis_school_prereg_render(): string {
 			</div>
 
 			<fieldset class="ceredis-preregistration__fieldset">
-				<legend>Niveaux concernés <span>(obligatoire)</span></legend>
+				<legend>Niveaux concernés <span>(obligatoire)</span> — Rallye : Seconde, Première · ENAA : CP, CE1</legend>
 				<div class="ceredis-preregistration__choices" aria-required="true">
 					<label class="ceredis-preregistration__choice" for="csp-niveau-seconde">
 						<input id="csp-niveau-seconde" type="checkbox" name="niveaux[]" value="Seconde">
@@ -262,6 +313,14 @@ function ceredis_school_prereg_render(): string {
 					<label class="ceredis-preregistration__choice" for="csp-niveau-premiere">
 						<input id="csp-niveau-premiere" type="checkbox" name="niveaux[]" value="Première">
 						<span>Première</span>
+					</label>
+					<label class="ceredis-preregistration__choice" for="csp-niveau-cp">
+						<input id="csp-niveau-cp" type="checkbox" name="niveaux[]" value="CP">
+						<span>CP</span>
+					</label>
+					<label class="ceredis-preregistration__choice" for="csp-niveau-ce1">
+						<input id="csp-niveau-ce1" type="checkbox" name="niveaux[]" value="CE1">
+						<span>CE1</span>
 					</label>
 				</div>
 			</fieldset>
@@ -321,7 +380,7 @@ function ceredis_school_prereg_render(): string {
 			</fieldset>
 
 			<p class="ceredis-preregistration__notice ceredis-preregistration__field--full">
-				Pré-inscription sans engagement. Le calendrier de la première édition est prévisionnel et reste soumis à la confirmation du financement.
+				Pré-inscription sans engagement. Le calendrier de la première édition du Rallye est prévisionnel et reste soumis à la confirmation du financement.
 			</p>
 			<div class="ceredis-preregistration__field ceredis-preregistration__field--full">
 				<button class="ceredis-preregistration__submit" type="submit">Envoyer ma pré-inscription</button>

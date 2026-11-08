@@ -4,7 +4,7 @@ Theme URI: https://ceredis.net/
 Author: CEREDIS
 Author URI: https://ceredis.net/
 Description: Official editorial theme for the CEREDIS WordPress Multisite network.
-Version: 0.2.6
+Version: 0.2.7
 Requires at least: 7.1
 Requires PHP: 8.3
 License: GPL-2.0-or-later
@@ -3494,6 +3494,23 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 /* === /CEREDIS partners page v1 =================================================== */
 
 /* === CEREDIS school preregistration ============================================ */
+.ceredis-signup-contact__grid {
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	gap: clamp(1.5rem, 4vw, 3rem);
+	align-items: start;
+}
+
+.ceredis-signup-contact__grid > * {
+	width: 100%;
+	max-width: none;
+	margin-block: 0 !important;
+	margin-inline: 0 !important;
+}
+
+.ceredis-signup-contact__contact {
+	align-self: start;
+}
+
 .ceredis-preregistration {
 	box-sizing: border-box;
 	padding: clamp(1.25rem, 3vw, 2rem);
@@ -3512,12 +3529,15 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
+	align-items: end;
 }
 
 .ceredis-preregistration__field {
 	display: flex;
 	min-width: 0;
 	flex-direction: column;
+	justify-content: flex-end;
+	align-self: stretch;
 	gap: 0.35rem;
 	margin: 0;
 }
@@ -3542,6 +3562,14 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	font-weight: 600;
 }
 
+.ceredis-preregistration__choices {
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.ceredis-preregistration__field--full {
+	grid-column: 1 / -1;
+}
+
 .ceredis-preregistration__field :is(input, select, textarea) {
 	box-sizing: border-box;
 	width: 100%;
@@ -3554,8 +3582,13 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	font: inherit;
 }
 
+.ceredis-preregistration__field :is(input, select) {
+	height: 3rem;
+}
+
 .ceredis-preregistration__field textarea {
-	min-height: 7rem;
+	height: auto;
+	min-height: 6rem;
 	resize: vertical;
 }
 
@@ -3656,6 +3689,10 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	font-size: 0.9375rem;
 }
 
+.ceredis-preregistration__status p {
+	margin-block: 0.5rem 0;
+}
+
 .ceredis-preregistration__status--ok {
 	border-color: var(--wp--preset--color--ceredis-cyan);
 	color: var(--wp--preset--color--ceredis-deep);
@@ -3668,10 +3705,36 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
 	background-color: var(--wp--preset--color--ceredis-pale-fuchsia);
 }
 
-@media (max-width: 780px) {
+@media (max-width: 999px) {
+	.ceredis-signup-contact__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 781px) {
+	.ceredis-signup-contact__grid > * {
+		margin-block: 0 !important;
+	}
+
 	.ceredis-preregistration__form,
 	.ceredis-preregistration__choices {
 		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ceredis-preregistration__field,
+	.ceredis-preregistration__field--full {
+		grid-column: 1 / -1;
+	}
+
+	.ceredis-preregistration__field :is(input, select, textarea),
+	.ceredis-preregistration__submit {
+		min-height: 44px;
+	}
+}
+
+@media (min-width: 782px) {
+	.ceredis-preregistration__choices {
+		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 	}
 }
 /* === /CEREDIS school preregistration =========================================== */
