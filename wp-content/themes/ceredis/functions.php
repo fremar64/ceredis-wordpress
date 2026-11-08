@@ -92,3 +92,4 @@ function ceredis_register_pattern_categories(): void {
 add_action( 'init', 'ceredis_register_pattern_categories' );
 
 require_once get_stylesheet_directory() . '/inc/partner-form.php';
+require_once get_stylesheet_directory() . '/inc/school-preregistration.php';

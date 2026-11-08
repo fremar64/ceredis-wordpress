@@ -27,42 +27,7 @@ $contact_mailto  = 'mailto:contact@ceredis.net?subject=' . $contact_subject;
 				<p class="ceredis-lead">Gratuit. Remplissez ce formulaire&nbsp;: nous revenons vers vous avec la suite.</p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:html -->
-				<!-- TODO-CONTENT: BLOQUANT POUR LA MISE EN PRODUCTION : remplacer ce repli mailto par un traitement réel (plugin de formulaire ou autre), avec message de confirmation, protection anti-spam et mention d'information sur l'usage des données (page de confidentialité à créer). -->
-				<form class="ceredis-signup-contact__form" action="mailto:contact@ceredis.net" method="post" enctype="text/plain">
-					<div class="ceredis-form__field">
-						<label for="ceredis-signup-organization">Nom de l'établissement</label>
-						<input id="ceredis-signup-organization" name="etablissement" type="text" autocomplete="organization" required />
-					</div>
-					<div class="ceredis-form__field">
-						<label for="ceredis-signup-city">Ville</label>
-						<input id="ceredis-signup-city" name="ville" type="text" autocomplete="address-level2" required />
-					</div>
-					<div class="ceredis-form__field">
-						<label for="ceredis-signup-role">Votre fonction</label>
-						<select id="ceredis-signup-role" name="fonction" required>
-							<option value="" selected disabled>Choisissez une option</option>
-							<option value="Chef d'établissement">Chef d'établissement</option>
-							<option value="Enseignant·e">Enseignant·e</option>
-							<option value="Autre">Autre</option>
-						</select>
-					</div>
-					<div class="ceredis-form__field">
-						<label for="ceredis-signup-email">E-mail</label>
-						<input id="ceredis-signup-email" name="email" type="email" autocomplete="email" required />
-					</div>
-					<div class="ceredis-form__field">
-						<label for="ceredis-signup-interest">Je m'intéresse à</label>
-						<select id="ceredis-signup-interest" name="programme">
-							<option value="" selected>Choisissez une option</option>
-							<option value="Rallye scolaire (lycée)">Rallye scolaire (lycée)</option>
-							<option value="ENAA (CP et CE1)">ENAA (CP et CE1)</option>
-							<option value="Les deux">Les deux</option>
-						</select>
-					</div>
-					<button class="ceredis-form__submit" type="submit">Envoyer ma demande</button>
-				</form>
-				<!-- /wp:html -->
+				<!-- wp:ceredis/school-preregistration /-->
 			</div>
 			<!-- /wp:group -->
 
