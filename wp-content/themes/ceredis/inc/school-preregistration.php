@@ -230,8 +230,13 @@ function ceredis_school_prereg_handle(): void {
 	}
 
 	$receipt_subject = 'CEREDIS — Nous avons bien reçu votre pré-inscription';
+	$receipt_intro   = array(
+		'rallye'   => "Nous avons bien reçu la pré-inscription de {$etablissement} au programme Rallye scolaire (lycée).",
+		'enaa'     => "Nous avons bien reçu la pré-inscription de {$etablissement} au programme ENAA (CP et CE1).",
+		'les_deux' => "Nous avons bien reçu la pré-inscription de {$etablissement} aux programmes Rallye scolaire (lycée) et ENAA (CP et CE1).",
+	)[ $programme ];
 	$receipt_body    = "Bonjour {$nom},\n\n"
-		. "Nous avons bien reçu la pré-inscription de {$etablissement} ({$programme_label}). Merci de l'intérêt que vous portez à cette initiative.\n\n"
+		. "{$receipt_intro} Merci de l'intérêt que vous portez à cette initiative.\n\n"
 		. ( 'enaa' === $programme
 			? "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Nous reviendrons vers vous pour étudier avec vous la participation de votre classe aux premières classes pilotes d'ENAA.\n\n"
 			: "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Le calendrier ci-dessous est prévisionnel et reste soumis à la confirmation du financement de la première édition :\n"
