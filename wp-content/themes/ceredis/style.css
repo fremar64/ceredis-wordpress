@@ -4,7 +4,7 @@ Theme URI: https://ceredis.net/
 Author: CEREDIS
 Author URI: https://ceredis.net/
 Description: Official editorial theme for the CEREDIS WordPress Multisite network.
-Version: 0.2.5
+Version: 0.2.9
 Requires at least: 7.1
 Requires PHP: 8.3
 License: GPL-2.0-or-later
@@ -3492,3 +3492,273 @@ body .ceredis-partners-page :where(.is-layout-constrained) > :where(:not(.alignf
     }
 }
 /* === /CEREDIS partners page v1 =================================================== */
+
+/* === CEREDIS school preregistration ============================================ */
+.ceredis-signup-contact__grid {
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	gap: clamp(1.5rem, 4vw, 3rem);
+	align-items: start;
+}
+
+.ceredis-signup-contact__grid > * {
+	width: 100%;
+	max-width: none;
+	margin-block: 0 !important;
+	margin-inline: 0 !important;
+}
+
+.ceredis-signup-contact__contact {
+	align-self: start;
+	position: static;
+}
+
+.ceredis-signup-contact__signup > :is(.wp-block-heading, .ceredis-lead, .ceredis-preregistration) {
+	width: 100%;
+	max-width: none;
+	margin-inline: 0 !important;
+}
+
+.ceredis-signup-contact__signup > .ceredis-lead {
+	text-align: left;
+}
+
+.ceredis-preregistration {
+	box-sizing: border-box;
+	padding: 0;
+	border-radius: 0;
+	color: var(--wp--preset--color--ceredis-ink);
+	background: transparent;
+	box-shadow: none;
+}
+
+.ceredis-preregistration a {
+	color: var(--wp--preset--color--ceredis-blue);
+	text-decoration: underline;
+}
+
+.ceredis-preregistration__form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+	align-items: end;
+}
+
+.ceredis-preregistration__field {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: 0.35rem;
+	margin: 0;
+}
+
+.ceredis-preregistration__field--full,
+.ceredis-preregistration__fieldset--full,
+.ceredis-preregistration__fieldset {
+	grid-column: 1 / -1;
+}
+
+.ceredis-preregistration__field label,
+.ceredis-preregistration__fieldset legend {
+	padding: 0;
+	color: var(--wp--preset--color--ceredis-ink);
+	font-size: 0.875rem;
+	font-weight: 700;
+}
+
+.ceredis-preregistration__field label span,
+.ceredis-preregistration__fieldset legend span {
+	font-size: 0.8125rem;
+	font-weight: 600;
+}
+
+.ceredis-preregistration__req {
+	color: var(--wp--preset--color--ceredis-fuchsia-hover);
+	white-space: nowrap;
+}
+
+.ceredis-preregistration__required-note {
+	grid-column: 1 / -1;
+	margin: 0;
+	color: var(--wp--preset--color--ceredis-ink);
+	font-size: 0.875rem;
+}
+
+.ceredis-preregistration__field--full {
+	grid-column: 1 / -1;
+}
+
+.ceredis-preregistration__field :is(input, select, textarea) {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.65rem 0.8rem;
+	border: 1px solid var(--wp--preset--color--ceredis-blue);
+	border-radius: var(--ceredis-radius-sm);
+	color: var(--wp--preset--color--ceredis-ink);
+	background-color: var(--wp--preset--color--ceredis-white);
+	font: inherit;
+}
+
+.ceredis-preregistration__field :is(input, select) {
+	height: 3rem;
+}
+
+.ceredis-preregistration__field textarea {
+	height: auto;
+	min-height: 6rem;
+	resize: vertical;
+}
+
+.ceredis-preregistration__fieldset {
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.ceredis-preregistration__fieldset legend {
+	margin-block-end: 0.4rem;
+}
+
+.ceredis-preregistration__choices {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+	gap: 0.65rem;
+}
+
+.ceredis-preregistration__choice,
+.ceredis-preregistration__consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	padding: 0.7rem 0.85rem;
+	border: 1px solid var(--wp--preset--color--ceredis-border);
+	border-radius: var(--ceredis-radius-sm);
+	color: var(--wp--preset--color--ceredis-ink);
+	cursor: pointer;
+}
+
+.ceredis-preregistration__choice:has(input:checked) {
+	border-color: var(--wp--preset--color--ceredis-blue);
+	background-color: var(--wp--preset--color--ceredis-pale-cyan);
+}
+
+.ceredis-preregistration__choice input,
+.ceredis-preregistration__consent input {
+	flex: none;
+	width: auto;
+	min-height: 1rem;
+	margin-block-start: 0.2rem;
+	accent-color: var(--wp--preset--color--ceredis-blue);
+}
+
+.ceredis-preregistration__privacy {
+	display: inline-block;
+	margin-block-start: 0.65rem;
+}
+
+.ceredis-preregistration__notice {
+	margin: 0;
+	padding: 0.85rem 1rem;
+	border-inline-start: 4px solid var(--wp--preset--color--ceredis-cyan);
+	border-radius: var(--ceredis-radius-sm);
+	color: var(--wp--preset--color--ceredis-deep);
+	background-color: var(--wp--preset--color--ceredis-pale-cyan);
+}
+
+.ceredis-preregistration__submit {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.7rem 1rem;
+	border: 2px solid var(--wp--preset--color--ceredis-fuchsia-hover);
+	border-radius: 999px;
+	color: var(--wp--preset--color--ceredis-white);
+	background-color: var(--wp--preset--color--ceredis-fuchsia-hover);
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.ceredis-preregistration__submit:hover {
+	border-color: var(--wp--preset--color--ceredis-blue);
+	background-color: var(--wp--preset--color--ceredis-blue);
+}
+
+.ceredis-preregistration :where(input, select, textarea, button, a):focus-visible {
+	outline: 3px solid var(--wp--preset--color--ceredis-deep);
+	outline-offset: 3px;
+}
+
+.ceredis-preregistration__trap {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.ceredis-preregistration__status {
+	margin-block-end: 1rem;
+	padding: 0.85rem 1rem;
+	border-inline-start: 4px solid;
+	border-radius: var(--ceredis-radius-sm);
+	font-size: 0.9375rem;
+}
+
+.ceredis-preregistration__status p {
+	margin-block: 0.5rem 0;
+}
+
+.ceredis-preregistration__status--ok {
+	border-color: var(--wp--preset--color--ceredis-cyan);
+	color: var(--wp--preset--color--ceredis-deep);
+	background-color: var(--wp--preset--color--ceredis-pale-cyan);
+}
+
+.ceredis-preregistration__status--error {
+	border-color: var(--wp--preset--color--ceredis-fuchsia);
+	color: var(--wp--preset--color--ceredis-ink);
+	background-color: var(--wp--preset--color--ceredis-pale-fuchsia);
+}
+
+@media (max-width: 999px) {
+	.ceredis-signup-contact__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ceredis-signup-contact__contact {
+		position: static;
+	}
+}
+
+@media (min-width: 1000px) {
+	.ceredis-signup-contact__contact {
+		position: sticky;
+		top: 1.5rem;
+	}
+}
+
+@media (max-width: 781px) {
+	.ceredis-signup-contact__grid > * {
+		margin-block: 0 !important;
+	}
+
+	.ceredis-preregistration__form,
+	.ceredis-preregistration__choices {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ceredis-preregistration__field,
+	.ceredis-preregistration__field--full {
+		grid-column: 1 / -1;
+	}
+
+	.ceredis-preregistration__field :is(input, select, textarea),
+	.ceredis-preregistration__submit {
+		min-height: 44px;
+	}
+}
+
+/* === /CEREDIS school preregistration =========================================== */
