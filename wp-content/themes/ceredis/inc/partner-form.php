@@ -41,6 +41,7 @@ function ceredis_partner_form_text( string $key, int $max = 200 ): string {
  */
 function ceredis_partner_form_increment_hourly_count( string $key ): bool {
 	if ( wp_using_ext_object_cache() ) {
+		wp_cache_add( $key, 0, 'transient', 2 * HOUR_IN_SECONDS );
 		return false !== wp_cache_incr( $key, 1, 'transient' );
 	}
 
