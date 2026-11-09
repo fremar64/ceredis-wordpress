@@ -195,7 +195,7 @@ function ceredis_school_prereg_handle(): void {
 	}
 
 	$programme_label = $programmes[ $programme ]['label'];
-	$subject         = $programmes[ $programme ]['sujet'] . ' ' . $etablissement;
+	$subject         = (string) preg_replace( '/[\x00-\x1F]/', '', $programmes[ $programme ]['sujet'] . ' ' . $etablissement );
 	$body    = "Nom de l'établissement : {$etablissement}\n"
 		. "Programme : {$programme_label}\n"
 		. "Statut : {$statut}\n"

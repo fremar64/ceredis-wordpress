@@ -119,7 +119,7 @@ function ceredis_partner_form_handle(): void {
 	}
 
 	// 7. Message (texte brut, UTF-8).
-	$subject = '[Partenariat] ' . $organisation;
+	$subject = (string) preg_replace( '/[\x00-\x1F]/', '', '[Partenariat] ' . $organisation );
 	$body    = "Profil : {$profil}\n"
 		. "Nom et prénom : {$nom}\n"
 		. "Organisation : {$organisation}\n"
