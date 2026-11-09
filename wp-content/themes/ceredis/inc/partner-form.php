@@ -37,6 +37,22 @@ function ceredis_partner_form_text( string $key, int $max = 200 ): string {
 }
 
 /**
+ * Incrémente le compteur d'une fenêtre horaire sans renouveler son expiration.
+ */
+function ceredis_partner_form_increment_hourly_count( string $key ): bool {
+	if ( wp_using_ext_object_cache() ) {
+		return false !== wp_cache_incr( $key, 1, 'transient' );
+	}
+
+	$count = get_transient( $key );
+	if ( false === $count ) {
+		return set_transient( $key, 1, 2 * HOUR_IN_SECONDS );
+	}
+
+	return update_option( '_transient_' . $key, (int) $count + 1, false );
+}
+
+/**
  * Traitement du formulaire.
  */
 function ceredis_partner_form_handle(): void {
@@ -94,6 +110,14 @@ function ceredis_partner_form_handle(): void {
 		ceredis_partner_form_redirect( 'erreur' );
 	}
 
+	$email_key = 'ceredis_partner_form_email_' . wp_hash( strtolower( $email ), 'auth' );
+	$count_key = 'ceredis_partner_hourly_count_' . gmdate( 'YmdH' );
+	$count     = get_transient( $count_key );
+	$count     = false === $count ? 0 : (int) $count;
+	if ( false !== get_transient( $email_key ) || $count >= 20 ) {
+		ceredis_partner_form_redirect( 'limite' );
+	}
+
 	// 7. Message (texte brut, UTF-8).
 	$subject = '[Partenariat] ' . $organisation;
 	$body    = "Profil : {$profil}\n"
@@ -121,6 +145,13 @@ function ceredis_partner_form_handle(): void {
 		ceredis_partner_form_redirect( 'erreur' );
 	}
 
+	if ( ! set_transient( $email_key, 1, HOUR_IN_SECONDS ) ) {
+		error_log( '[ceredis] Formulaire partenaire : impossible de définir la limite par adresse.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+	}
+	if ( ! ceredis_partner_form_increment_hourly_count( $count_key ) ) {
+		error_log( '[ceredis] Formulaire partenaire : impossible de mettre à jour le compteur horaire.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+	}
+
 	ceredis_partner_form_redirect( 'ok' );
 }
 add_action( 'admin_post_ceredis_partner_form', 'ceredis_partner_form_handle' );
@@ -146,6 +177,11 @@ function ceredis_partner_form_shortcode(): string {
 		<?php elseif ( 'erreur' === $status ) : ?>
 			<div class="ceredis-partner-form__status ceredis-partner-form__status--error" role="alert">
 				Votre demande n'a pas pu être envoyée. Vérifiez les champs obligatoires ou écrivez-nous à
+				<a href="mailto:contact@ceredis.net">contact@ceredis.net</a>.
+			</div>
+		<?php elseif ( 'limite' === $status ) : ?>
+			<div class="ceredis-partner-form__status ceredis-partner-form__status--error" role="alert">
+				Le formulaire ne peut pas accepter cette demande pour le moment. Réessayez plus tard ou écrivez-nous à
 				<a href="mailto:contact@ceredis.net">contact@ceredis.net</a>.
 			</div>
 		<?php endif; ?>
