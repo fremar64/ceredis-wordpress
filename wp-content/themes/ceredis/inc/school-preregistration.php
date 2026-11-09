@@ -46,6 +46,22 @@ function ceredis_school_prereg_choice( string $key, array $allowed, bool $requir
 	return $required && '' === $value ? null : $value;
 }
 
+/**
+ * Incrémente le compteur d'une fenêtre horaire sans renouveler son expiration.
+ */
+function ceredis_school_prereg_increment_hourly_count( string $key ): bool {
+	if ( wp_using_ext_object_cache() ) {
+		return false !== wp_cache_incr( $key, 1, 'transient' );
+	}
+
+	$count = get_transient( $key );
+	if ( false === $count ) {
+		return set_transient( $key, 1, 2 * HOUR_IN_SECONDS );
+	}
+
+	return update_option( '_transient_' . $key, (int) $count + 1, false );
+}
+
 function ceredis_school_prereg_handle(): void {
 	$nonce = isset( $_POST['ceredis_school_prereg_nonce'] ) && is_string( $_POST['ceredis_school_prereg_nonce'] )
 		? sanitize_text_field( wp_unslash( $_POST['ceredis_school_prereg_nonce'] ) )
@@ -168,14 +184,14 @@ function ceredis_school_prereg_handle(): void {
 
 	$email_key = 'ceredis_school_prereg_email_' . wp_hash( strtolower( $email ), 'auth' );
 	if ( false !== get_transient( $email_key ) ) {
-		ceredis_school_prereg_redirect( 'erreur' );
+		ceredis_school_prereg_redirect( 'limite' );
 	}
 
-	$count_key = 'ceredis_school_prereg_hourly_count';
+	$count_key = 'ceredis_school_prereg_hourly_count_' . gmdate( 'YmdH' );
 	$count     = get_transient( $count_key );
 	$count     = false === $count ? 0 : (int) $count;
 	if ( $count >= 30 ) {
-		ceredis_school_prereg_redirect( 'erreur' );
+		ceredis_school_prereg_redirect( 'limite' );
 	}
 
 	$programme_label = $programmes[ $programme ]['label'];
@@ -209,13 +225,13 @@ function ceredis_school_prereg_handle(): void {
 	if ( ! set_transient( $email_key, 1, HOUR_IN_SECONDS ) ) {
 		error_log( '[ceredis] Pré-inscription Rallye : impossible de définir la limite par adresse.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 	}
-	if ( ! set_transient( $count_key, $count + 1, HOUR_IN_SECONDS ) ) {
+	if ( ! ceredis_school_prereg_increment_hourly_count( $count_key ) ) {
 		error_log( '[ceredis] Pré-inscription Rallye : impossible de mettre à jour le compteur horaire.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 	}
 
-	$receipt_subject = 'CEREDIS — Nous avons bien reçu votre pré-inscription au Rallye scolaire';
+	$receipt_subject = 'CEREDIS — Nous avons bien reçu votre pré-inscription';
 	$receipt_body    = "Bonjour {$nom},\n\n"
-		. "Nous avons bien reçu la pré-inscription de {$etablissement} au Rallye scolaire CEREDIS. Merci de l'intérêt que vous portez à cette initiative.\n\n"
+		. "Nous avons bien reçu la pré-inscription de {$etablissement} ({$programme_label}). Merci de l'intérêt que vous portez à cette initiative.\n\n"
 		. ( 'enaa' === $programme
 			? "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Nous reviendrons vers vous pour étudier avec vous la participation de votre classe aux premières classes pilotes d'ENAA.\n\n"
 			: "Il s'agit d'une manifestation d'intérêt, sans engagement de part ni d'autre. Le calendrier ci-dessous est prévisionnel et reste soumis à la confirmation du financement de la première édition :\n"
@@ -259,6 +275,10 @@ function ceredis_school_prereg_render(): string {
 					<p>Choisissez un programme et au moins un niveau concerné.</p>
 				<?php endif; ?>
 			</div>
+		<?php elseif ( 'limite' === $status ) : ?>
+			<div class="ceredis-preregistration__status ceredis-preregistration__status--error" role="alert">
+				<p>Une demande vient d'être enregistrée avec cette adresse, ou le formulaire reçoit beaucoup de demandes. Réessayez plus tard ou écrivez-nous à <a href="mailto:contact@ceredis.net">contact@ceredis.net</a>.</p>
+			</div>
 		<?php endif; ?>
 
 		<form class="ceredis-preregistration__form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
@@ -291,7 +311,7 @@ function ceredis_school_prereg_render(): string {
 			<div class="ceredis-preregistration__field">
 				<label for="csp-statut">Statut <span class="ceredis-preregistration__req" aria-hidden="true">*</span></label>
 				<select id="csp-statut" name="statut" required>
-					<option value="" selected disabled></option>
+					<option value="" selected disabled>Choisissez une option</option>
 					<option value="Public">Public</option>
 					<option value="Privé">Privé</option>
 				</select>
@@ -334,7 +354,7 @@ function ceredis_school_prereg_render(): string {
 			<div class="ceredis-preregistration__field">
 				<label for="csp-equipement">Salle informatique ou ordinateurs disponibles</label>
 				<select id="csp-equipement" name="equipement">
-					<option value="" selected></option>
+					<option value="" selected>Choisissez une option</option>
 					<option value="Oui">Oui</option>
 					<option value="En partie">En partie</option>
 					<option value="Non">Non</option>
@@ -348,7 +368,7 @@ function ceredis_school_prereg_render(): string {
 			<div class="ceredis-preregistration__field">
 				<label for="csp-fonction">Fonction</label>
 				<select id="csp-fonction" name="fonction">
-					<option value="" selected></option>
+					<option value="" selected>Choisissez une option</option>
 					<option value="Chef d'établissement">Chef d'établissement</option>
 					<option value="Directeur des études">Directeur des études</option>
 					<option value="Enseignant référent">Enseignant référent</option>
@@ -373,7 +393,7 @@ function ceredis_school_prereg_render(): string {
 				<legend>Consentement <span class="ceredis-preregistration__req" aria-hidden="true">*</span></legend>
 				<label class="ceredis-preregistration__consent" for="csp-consent">
 					<input id="csp-consent" type="checkbox" name="consent" value="1" required>
-					<span>J&#039;accepte que CEREDIS utilise ces informations pour me recontacter au sujet du Rallye.</span>
+					<span>J&#039;accepte que CEREDIS utilise ces informations pour me recontacter au sujet de cette pré-inscription.</span>
 				</label>
 				<?php $privacy_policy_url = get_privacy_policy_url(); ?>
 				<?php if ( '' !== $privacy_policy_url ) : ?>
