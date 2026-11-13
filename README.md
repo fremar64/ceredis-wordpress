@@ -49,7 +49,7 @@ Le projet repose sur les principes suivants :
 | Thème | Thème FSE CEREDIS |
 | Fonctions réseau | MU-plugin CEREDIS Core |
 | Serveur web | Apache |
-| Environnement d’exécution | PHP 8.3 |
+| Environnement d’exécution | PHP 8.5 |
 | Base de données | MySQL 8.4 |
 | Conteneurisation | Docker Compose |
 | Administration en ligne de commande | WP-CLI |
@@ -59,16 +59,16 @@ Le projet repose sur les principes suivants :
 L’image de base utilisée par le Dockerfile est :
 
 ```dockerfile
-FROM wordpress:7.1.2-php8.3-apache
+FROM wordpress:7.1.4-php8.5-apache
 ```
 
 WP-CLI est intégré à l’image à partir de :
 
 ```text
-wordpress:cli-2.12.0-php8.3
+wordpress:cli-2.12.0-php8.5
 ```
 
-Le cœur WordPress reste celui de la distribution officielle.
+Le cœur WordPress reste celui de la distribution officielle. La version PHP indiquée ici correspond à l’environnement d’exécution de l’image Docker. Les en-têtes `Requires PHP: 8.3` observés dans certains composants du thème et du MU-plugin expriment un prérequis minimal de compatibilité, et non la version PHP effectivement utilisée par l’image de production.
 
 ## 4. Structure du dépôt
 

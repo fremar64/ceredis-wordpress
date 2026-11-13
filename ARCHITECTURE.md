@@ -140,23 +140,25 @@ Cloudflare assure notamment la gestion DNS du domaine et les fonctions de protec
 Le Dockerfile utilise l'image officielle :
 
 ```dockerfile
-FROM wordpress:7.1.2-php8.3-apache
+FROM wordpress:7.1.4-php8.5-apache
 ```
 
 Cette image fournit le socle d'exécution :
 
 - WordPress ;
-- PHP 8.3 ;
+- PHP 8.5 ;
 - Apache ;
 - les dépendances nécessaires au fonctionnement de WordPress.
 
 WP-CLI est intégré à partir de l'image officielle :
 
 ```text
-wordpress:cli-2.12.0-php8.3
+wordpress:cli-2.12.0-php8.5
 ```
 
 Le cœur WordPress n'est pas forké. Les personnalisations CEREDIS sont ajoutées au-dessus de la distribution officielle.
+
+La configuration de référence a évolué depuis la première génération fondée sur PHP 8.3. Cette évolution s'inscrit dans la mise à jour de la base d'exécution et dans la prise en compte des vulnérabilités de sécurité PHP rendues publiques en octobre 2026, qui ont conduit CEREDIS à faire évoluer son image de référence vers PHP 8.5. Cette décision ne doit pas être présentée comme une version unique ou universelle de correction ; elle correspond à la politique de mise à jour du projet et à la compatibilité de l'infrastructure exécutée.
 
 Une évolution de WordPress passe donc par le changement de version de l'image de base, la reconstruction et la validation de la nouvelle image CEREDIS.
 
